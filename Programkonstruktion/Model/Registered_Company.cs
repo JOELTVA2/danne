@@ -12,20 +12,24 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Registered_Company
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Registered_Company()
         {
-            this.Customer = new HashSet<Customer>();
+            this.ActiveCompanies = new HashSet<ActiveCompanies>();
+            this.Employee = new HashSet<Employee>();
+            this.Bransch = new HashSet<Bransch>();
         }
     
-        public int EmployeeId { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CompanyId { get; set; }
+        public int RegComp_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customer { get; set; }
-        public virtual Registered_Company Registered_Company { get; set; }
+        public virtual ICollection<ActiveCompanies> ActiveCompanies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bransch> Bransch { get; set; }
     }
 }

@@ -12,12 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class ActiveCompanies
     {
-        public int CustomerId { get; set; }
-        public string Name { get; set; }
-        public int EmployeeId { get; set; }
+        public int ID { get; set; }
+        public int RegComp_Id { get; set; }
+        public int BranschId { get; set; }
+        public int Econ_Assoc_Id { get; set; }
     
-        public virtual Employee Employee { get; set; }
+        public virtual Bransch Bransch { get; set; }
+        public virtual Economic_Association Economic_Association { get; set; }
+        public virtual Registered_Company Registered_Company { get; set; }
     }
 }

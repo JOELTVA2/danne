@@ -12,12 +12,10 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Employee_History
     {
-        public int CustomerId { get; set; }
-        public string Name { get; set; }
         public int EmployeeId { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CompanyId { get; set; }
     }
 }

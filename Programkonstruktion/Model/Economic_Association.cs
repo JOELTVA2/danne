@@ -12,20 +12,18 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Economic_Association
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Economic_Association()
         {
-            this.Customer = new HashSet<Customer>();
+            this.ActiveCompanies = new HashSet<ActiveCompanies>();
         }
     
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> CompanyId { get; set; }
+        public string Econ_Assoc_Name { get; set; }
+        public int Econ_Assoc_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customer { get; set; }
-        public virtual Registered_Company Registered_Company { get; set; }
+        public virtual ICollection<ActiveCompanies> ActiveCompanies { get; set; }
     }
 }
