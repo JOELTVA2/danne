@@ -5,24 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="LabSQL2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ActiveCompanies">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RegComp_Id" Type="int" Nullable="false" />
-          <Property Name="BranschId" Type="int" Nullable="false" />
-          <Property Name="Econ_Assoc_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Bankruptcy">
-          <Key>
-            <PropertyRef Name="BranschId" />
-            <PropertyRef Name="RegComp_Id" />
-          </Key>
-          <Property Name="BranschId" Type="int" Nullable="false" />
-          <Property Name="RegComp_Id" Type="int" Nullable="false" />
-          <Property Name="date" Type="datetime" />
-        </EntityType>
         <EntityType Name="Bransch">
           <Key>
             <PropertyRef Name="BranschId" />
@@ -38,13 +20,6 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Economic_Association">
-          <Key>
-            <PropertyRef Name="Econ_Assoc_Id" />
-          </Key>
-          <Property Name="Econ_Assoc_Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Econ_Assoc_Id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -59,69 +34,18 @@
           </Key>
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RegComp_Id" Type="int" Nullable="false" />
+          <Property Name="BranschId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ActiveComp__Bransch">
-          <End Role="Bransch" Type="Self.Bransch" Multiplicity="1" />
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bransch">
-              <PropertyRef Name="BranschId" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="BranschId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ActiveComp__EconAssoc">
-          <End Role="Economic_Association" Type="Self.Economic_Association" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Economic_Association">
-              <PropertyRef Name="Econ_Assoc_Id" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="Econ_Assoc_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ActiveComp__RegComp">
-          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="1" />
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registered_Company">
-              <PropertyRef Name="RegComp_Id" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="RegComp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Bankruptcy__RegComp_Id">
-          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Bankruptcy" Type="Self.Bankruptcy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registered_Company">
-              <PropertyRef Name="RegComp_Id" />
-            </Principal>
-            <Dependent Role="Bankruptcy">
-              <PropertyRef Name="RegComp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Bankruptcy_BranschId">
+        <Association Name="FK__Registered__BranschId">
           <End Role="Bransch" Type="Self.Bransch" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Bankruptcy" Type="Self.Bankruptcy" Multiplicity="*" />
+          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bransch">
               <PropertyRef Name="BranschId" />
             </Principal>
-            <Dependent Role="Bankruptcy">
+            <Dependent Role="Registered_Company">
               <PropertyRef Name="BranschId" />
             </Dependent>
           </ReferentialConstraint>
@@ -155,32 +79,13 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LabSQL2ModelStoreContainer">
-          <EntitySet Name="ActiveCompanies" EntityType="Self.ActiveCompanies" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Bankruptcy" EntityType="Self.Bankruptcy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bransch" EntityType="Self.Bransch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Economic_Association" EntityType="Self.Economic_Association" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Registered_Company" EntityType="Self.Registered_Company" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ActiveComp__Bransch" Association="Self.FK__ActiveComp__Bransch">
+          <AssociationSet Name="FK__Registered__BranschId" Association="Self.FK__Registered__BranschId">
             <End Role="Bransch" EntitySet="Bransch" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ActiveComp__EconAssoc" Association="Self.FK__ActiveComp__EconAssoc">
-            <End Role="Economic_Association" EntitySet="Economic_Association" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ActiveComp__RegComp" Association="Self.FK__ActiveComp__RegComp">
             <End Role="Registered_Company" EntitySet="Registered_Company" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Bankruptcy__RegComp_Id" Association="Self.FK__Bankruptcy__RegComp_Id">
-            <End Role="Registered_Company" EntitySet="Registered_Company" />
-            <End Role="Bankruptcy" EntitySet="Bankruptcy" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bankruptcy_BranschId" Association="Self.FK_Bankruptcy_BranschId">
-            <End Role="Bransch" EntitySet="Bransch" />
-            <End Role="Bankruptcy" EntitySet="Bankruptcy" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Employee" Association="Self.FK_Customer_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -196,37 +101,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabSQL2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ActiveCompanies">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegComp_Id" Type="Int32" Nullable="false" />
-          <Property Name="BranschId" Type="Int32" Nullable="false" />
-          <Property Name="Econ_Assoc_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bransch" Relationship="Self.FK__ActiveComp__Bransch" FromRole="ActiveCompanies" ToRole="Bransch" />
-          <NavigationProperty Name="Economic_Association" Relationship="Self.FK__ActiveComp__EconAssoc" FromRole="ActiveCompanies" ToRole="Economic_Association" />
-          <NavigationProperty Name="Registered_Company" Relationship="Self.FK__ActiveComp__RegComp" FromRole="ActiveCompanies" ToRole="Registered_Company" />
-        </EntityType>
-        <EntityType Name="Bankruptcy">
-          <Key>
-            <PropertyRef Name="BranschId" />
-            <PropertyRef Name="RegComp_Id" />
-          </Key>
-          <Property Name="BranschId" Type="Int32" Nullable="false" />
-          <Property Name="RegComp_Id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Registered_Company" Relationship="Self.FK__Bankruptcy__RegComp_Id" FromRole="Bankruptcy" ToRole="Registered_Company" />
-          <NavigationProperty Name="Bransch" Relationship="Self.FK_Bankruptcy_BranschId" FromRole="Bankruptcy" ToRole="Bransch" />
-        </EntityType>
         <EntityType Name="Bransch">
           <Key>
             <PropertyRef Name="BranschId" />
           </Key>
           <Property Name="BranschId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ActiveCompanies" Relationship="Self.FK__ActiveComp__Bransch" FromRole="Bransch" ToRole="ActiveCompanies" />
-          <NavigationProperty Name="Bankruptcy" Relationship="Self.FK_Bankruptcy_BranschId" FromRole="Bransch" ToRole="Bankruptcy" />
+          <NavigationProperty Name="Registered_Company" Relationship="Self.FK__Registered__BranschId" FromRole="Bransch" ToRole="Registered_Company" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -236,14 +117,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Customer_Employee" FromRole="Customer" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Economic_Association">
-          <Key>
-            <PropertyRef Name="Econ_Assoc_Id" />
-          </Key>
-          <Property Name="Econ_Assoc_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Econ_Assoc_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ActiveCompanies" Relationship="Self.FK__ActiveComp__EconAssoc" FromRole="Economic_Association" ToRole="ActiveCompanies" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -261,72 +134,20 @@
           </Key>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RegComp_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ActiveCompanies" Relationship="Self.FK__ActiveComp__RegComp" FromRole="Registered_Company" ToRole="ActiveCompanies" />
-          <NavigationProperty Name="Bankruptcy" Relationship="Self.FK__Bankruptcy__RegComp_Id" FromRole="Registered_Company" ToRole="Bankruptcy" />
+          <Property Name="BranschId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bransch" Relationship="Self.FK__Registered__BranschId" FromRole="Registered_Company" ToRole="Bransch" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Emp_Company" FromRole="Registered_Company" ToRole="Employee" />
         </EntityType>
-        <Association Name="FK__ActiveComp__Bransch">
-          <End Role="Bransch" Type="Self.Bransch" Multiplicity="1" />
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bransch">
-              <PropertyRef Name="BranschId" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="BranschId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ActiveComp__EconAssoc">
-          <End Role="Economic_Association" Type="Self.Economic_Association" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Economic_Association">
-              <PropertyRef Name="Econ_Assoc_Id" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="Econ_Assoc_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ActiveComp__RegComp">
-          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="1" />
-          <End Role="ActiveCompanies" Type="Self.ActiveCompanies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registered_Company">
-              <PropertyRef Name="RegComp_Id" />
-            </Principal>
-            <Dependent Role="ActiveCompanies">
-              <PropertyRef Name="RegComp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Bankruptcy__RegComp_Id">
-          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Bankruptcy" Type="Self.Bankruptcy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Registered_Company">
-              <PropertyRef Name="RegComp_Id" />
-            </Principal>
-            <Dependent Role="Bankruptcy">
-              <PropertyRef Name="RegComp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Bankruptcy_BranschId">
+        <Association Name="FK__Registered__BranschId">
           <End Role="Bransch" Type="Self.Bransch" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Bankruptcy" Type="Self.Bankruptcy" Multiplicity="*" />
+          <End Role="Registered_Company" Type="Self.Registered_Company" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bransch">
               <PropertyRef Name="BranschId" />
             </Principal>
-            <Dependent Role="Bankruptcy">
+            <Dependent Role="Registered_Company">
               <PropertyRef Name="BranschId" />
             </Dependent>
           </ReferentialConstraint>
@@ -359,33 +180,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LabSQL2Entities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ActiveCompanies" EntityType="Self.ActiveCompanies" />
-          <EntitySet Name="Bankruptcy" EntityType="Self.Bankruptcy" />
+        <EntityContainer Name="LabSQL2Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bransch" EntityType="Self.Bransch" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
-          <EntitySet Name="Economic_Association" EntityType="Self.Economic_Association" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Registered_Company" EntityType="Self.Registered_Company" />
-          <AssociationSet Name="FK__ActiveComp__Bransch" Association="Self.FK__ActiveComp__Bransch">
+          <AssociationSet Name="FK__Registered__BranschId" Association="Self.FK__Registered__BranschId">
             <End Role="Bransch" EntitySet="Bransch" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ActiveComp__EconAssoc" Association="Self.FK__ActiveComp__EconAssoc">
-            <End Role="Economic_Association" EntitySet="Economic_Association" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ActiveComp__RegComp" Association="Self.FK__ActiveComp__RegComp">
             <End Role="Registered_Company" EntitySet="Registered_Company" />
-            <End Role="ActiveCompanies" EntitySet="ActiveCompanies" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Bankruptcy__RegComp_Id" Association="Self.FK__Bankruptcy__RegComp_Id">
-            <End Role="Registered_Company" EntitySet="Registered_Company" />
-            <End Role="Bankruptcy" EntitySet="Bankruptcy" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bankruptcy_BranschId" Association="Self.FK_Bankruptcy_BranschId">
-            <End Role="Bransch" EntitySet="Bransch" />
-            <End Role="Bankruptcy" EntitySet="Bankruptcy" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Employee" Association="Self.FK_Customer_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -401,26 +203,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabSQL2ModelStoreContainer" CdmEntityContainer="LabSQL2Entities1">
-          <EntitySetMapping Name="ActiveCompanies">
-            <EntityTypeMapping TypeName="LabSQL2Model.ActiveCompanies">
-              <MappingFragment StoreEntitySet="ActiveCompanies">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RegComp_Id" ColumnName="RegComp_Id" />
-                <ScalarProperty Name="BranschId" ColumnName="BranschId" />
-                <ScalarProperty Name="Econ_Assoc_Id" ColumnName="Econ_Assoc_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bankruptcy">
-            <EntityTypeMapping TypeName="LabSQL2Model.Bankruptcy">
-              <MappingFragment StoreEntitySet="Bankruptcy">
-                <ScalarProperty Name="BranschId" ColumnName="BranschId" />
-                <ScalarProperty Name="RegComp_Id" ColumnName="RegComp_Id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="LabSQL2ModelStoreContainer" CdmEntityContainer="LabSQL2Entities3">
           <EntitySetMapping Name="Bransch">
             <EntityTypeMapping TypeName="LabSQL2Model.Bransch">
               <MappingFragment StoreEntitySet="Bransch">
@@ -438,14 +221,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Economic_Association">
-            <EntityTypeMapping TypeName="LabSQL2Model.Economic_Association">
-              <MappingFragment StoreEntitySet="Economic_Association">
-                <ScalarProperty Name="Econ_Assoc_Name" ColumnName="Econ_Assoc_Name" />
-                <ScalarProperty Name="Econ_Assoc_Id" ColumnName="Econ_Assoc_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="LabSQL2Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
@@ -460,6 +235,7 @@
               <MappingFragment StoreEntitySet="Registered_Company">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RegComp_Id" ColumnName="RegComp_Id" />
+                <ScalarProperty Name="BranschId" ColumnName="BranschId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

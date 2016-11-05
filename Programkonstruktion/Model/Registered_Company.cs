@@ -17,18 +17,14 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Registered_Company()
         {
-            this.ActiveCompanies = new HashSet<ActiveCompanies>();
-            this.Bankruptcy = new HashSet<Bankruptcy>();
             this.Employee = new HashSet<Employee>();
         }
     
         public string Name { get; set; }
         public int RegComp_Id { get; set; }
+        public int BranschId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActiveCompanies> ActiveCompanies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bankruptcy> Bankruptcy { get; set; }
+        public virtual Bransch Bransch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }
     }

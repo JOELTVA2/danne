@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LabSQL2Entities1 : DbContext
+    public partial class LabSQL2Entities3 : DbContext
     {
-        public LabSQL2Entities1()
-            : base("name=LabSQL2Entities1")
+        public LabSQL2Entities3()
+            : base("name=LabSQL2Entities3")
         {
         }
     
@@ -25,11 +25,8 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ActiveCompanies> ActiveCompanies { get; set; }
-        public virtual DbSet<Bankruptcy> Bankruptcy { get; set; }
         public virtual DbSet<Bransch> Bransch { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Economic_Association> Economic_Association { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Registered_Company> Registered_Company { get; set; }
     }
