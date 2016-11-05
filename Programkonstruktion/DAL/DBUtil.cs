@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace DAL
 {
     class DBUtil
+        //nicedatabasmannen
 
     {
         public static SqlConnection CreateConnection()
