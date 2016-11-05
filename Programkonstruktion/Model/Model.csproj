@@ -30,19 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,89 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveCompanies.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Active_Companies_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AVDBD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AVDBD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AVDBD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AVDBD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AVDBD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Bankruptcy_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bransch.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bransch_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Economic_Association.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Economic_Association_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registered_Company.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Registered_Company_History.cs">
-      <DependentUpon>AVDBD.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="AVDBD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AVDBD.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="AVDBD.edmx.diagram">
-      <DependentUpon>AVDBD.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AVDBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AVDBD.edmx</DependentUpon>
-      <LastGenOutput>AVDBD.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="AVDBD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AVDBD.edmx</DependentUpon>
-      <LastGenOutput>AVDBD.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
