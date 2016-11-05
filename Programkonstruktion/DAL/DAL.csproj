@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranschAccess.cs" />
     <Compile Include="EmployeeAccess.cs" />
     <Compile Include="CustomerAccess.cs" />
     <Compile Include="DBUtil.cs" />

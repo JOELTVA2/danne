@@ -27,12 +27,12 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_Customers_With_A_Given_EmployeeID", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@EmpId", emp.Id);
+                cmd.Parameters.AddWithValue("@EmpId", emp.EmployeeId);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     Customer cust = new Customer();
-                    cust.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    cust.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
                     cust.Name = reader["Name"].ToString();
 
                     customers.Add(cust);
@@ -116,7 +116,7 @@ namespace DAL
                 if (reader.Read())
                 {
                     customer = new Customer();
-                    customer.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    customer.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
                     customer.Name = reader["Name"].ToString();
                 }
             }
@@ -143,9 +143,9 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_New_Customer", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CustomerId", cust.Id);
+                cmd.Parameters.AddWithValue("@CustomerId", cust.CustomerId);
                 cmd.Parameters.AddWithValue("@Name", cust.Name);
-                cmd.Parameters.AddWithValue("@EmployeeId", cust.Employee.Id);
+                cmd.Parameters.AddWithValue("@EmployeeId", cust.Employee.EmployeeId);
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -205,7 +205,7 @@ namespace DAL
                 
                 SqlCommand cmd = new SqlCommand("usp_Update_A_Customer", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@Id", cust.Id);
+                SqlParameter idParam = new SqlParameter("@Id", cust.CustomerId);
                 SqlParameter nameParam = new SqlParameter("@Name", cust.Name);
                 cmd.Parameters.Add(idParam);
                 cmd.Parameters.Add(nameParam);

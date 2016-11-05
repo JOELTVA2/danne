@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="LabSQL2Model.Customer" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LabSQL2Model.Economic_Association" Width="2.375" PointX="0.5" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LabSQL2Model.Employee" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Registered_Company" Width="2.25" PointX="0.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Registered_Company" Width="2.25" PointX="0.5" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__Bransch" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__EconAssoc" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__RegComp" ManuallyRouted="false" />

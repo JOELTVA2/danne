@@ -1,41 +1,39 @@
 ﻿using Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace DAL
 {
-    public class EmployeeAccess
+    class BranschAccess
     {
 
-        public static IEnumerable<Employee> ReadAll()
+
+        public static IEnumerable<Bransch> ReadAll()
         {
 
-            List<Employee> employees = new List<Employee>();
+            List<Bransch> bransches = new List<Bransch>();
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
-                return employees;
+                return bransches;
             }
             try
             {
 
-                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Employees", conn);
+                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Employee emp = new Employee();
-                    emp.EmployeeId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    emp.Name = reader["Name"].ToString();
+                    Bransch bransch = new Bransch();
+                    bransch.BranschId = reader.GetInt32(reader.GetOrdinal("Id"));
+                    bransch.Name = reader["Name"].ToString();
 
-                    employees.Add(emp);
+                    bransches.Add(bransch);
                 }
 
             }
@@ -50,16 +48,15 @@ namespace DAL
 
 
             }
-            return employees;
+            return bransches;
 
         }
 
 
-
-        public static Employee FindById(int id)
+        public static Bransch FindById(int branschId)
 
         {
-            Employee employee = null;
+            Bransch bransch = null;
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
@@ -67,18 +64,18 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_Find_An_Employee_By_ID", conn);
+                SqlCommand cmd = new SqlCommand("usp_Find_A_Bransch_By_BranschID", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmpId", id);
+                SqlParameter idParam = new SqlParameter("@BranschId", branschId);
                 cmd.Parameters.Add(idParam);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    employee = new Employee();
-                    employee.EmployeeId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    employee.Name = reader["Name"].ToString();
+                    bransch = new Bransch();
+                    bransch.BranschId = reader.GetInt32(reader.GetOrdinal("BranschId"));
+                    bransch.Name = reader["Name"].ToString();
                 }
             }
             catch (Exception e)
@@ -89,10 +86,10 @@ namespace DAL
             {
                 DBUtil.CloseConnection(conn);
             }
-            return employee;
+            return bransch;
         }
 
-        public static bool Create(Employee emp)
+        public static bool CreateBransch(Bransch bransch)
         {
             int result = 0;
             SqlConnection conn = DBUtil.CreateConnection();
@@ -102,13 +99,11 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_New_Employee", conn);
+                SqlCommand cmd = new SqlCommand("usp_New_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmpId", emp.EmployeeId);
-                SqlParameter nameParam = new SqlParameter("@EmpName", emp.Name);
-                SqlParameter companyParam = new SqlParameter("@CompanyId", emp.Name);
-                cmd.Parameters.Add(idParam);
-                cmd.Parameters.Add(nameParam);
+                cmd.Parameters.AddWithValue("@BranschId", bransch.BranschId);
+                cmd.Parameters.AddWithValue("@Name", bransch.Name);
+
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -135,9 +130,9 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_Delete_An_Employee", conn);
+                SqlCommand cmd = new SqlCommand("usp_Delete_A_Customer", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmployeeId", id);
+                SqlParameter idParam = new SqlParameter("@Id", id);
                 cmd.Parameters.Add(idParam);
                 result = cmd.ExecuteNonQuery();
             }
@@ -155,7 +150,7 @@ namespace DAL
             }
             return true;
         }
-        public static bool Update(Employee emp)
+        public static bool UpdateBransch(Bransch bransch)
         {
             int result = 0;
             SqlConnection conn = DBUtil.CreateConnection();
@@ -165,11 +160,11 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_Update_An_Employee", conn);
+
+                SqlCommand cmd = new SqlCommand("usp_Update_A_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmployeeId", emp.EmployeeId);
-                SqlParameter nameParam = new SqlParameter("@Name", emp.Name);
-                SqlParameter companyParam = new SqlParameter("@CompanyId", emp.Name);
+                SqlParameter idParam = new SqlParameter("@BranschId", bransch.BranschId);
+                SqlParameter nameParam = new SqlParameter("@Name", bransch.Name);
                 cmd.Parameters.Add(idParam);
                 cmd.Parameters.Add(nameParam);
                 result = cmd.ExecuteNonQuery();
@@ -190,3 +185,4 @@ namespace DAL
         }
     }
 }
+ 
