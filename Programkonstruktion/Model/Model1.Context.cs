@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LabSQL2Entities : DbContext
+    public partial class LabSQL2Entities1 : DbContext
     {
-        public LabSQL2Entities()
-            : base("name=LabSQL2Entities")
+        public LabSQL2Entities1()
+            : base("name=LabSQL2Entities1")
         {
         }
     
@@ -25,18 +25,12 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Active_Companies_History> Active_Companies_History { get; set; }
         public virtual DbSet<ActiveCompanies> ActiveCompanies { get; set; }
-        public virtual DbSet<Bankruptcy_History> Bankruptcy_History { get; set; }
+        public virtual DbSet<Bankruptcy> Bankruptcy { get; set; }
         public virtual DbSet<Bransch> Bransch { get; set; }
-        public virtual DbSet<Bransch_History> Bransch_History { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Customer_History> Customer_History { get; set; }
         public virtual DbSet<Economic_Association> Economic_Association { get; set; }
-        public virtual DbSet<Economic_Association_History> Economic_Association_History { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Employee_History> Employee_History { get; set; }
         public virtual DbSet<Registered_Company> Registered_Company { get; set; }
-        public virtual DbSet<Registered_Company_History> Registered_Company_History { get; set; }
     }
 }

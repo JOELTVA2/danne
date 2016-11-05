@@ -18,7 +18,7 @@ namespace Model
         public Bransch()
         {
             this.ActiveCompanies = new HashSet<ActiveCompanies>();
-            this.Registered_Company = new HashSet<Registered_Company>();
+            this.Bankruptcy = new HashSet<Bankruptcy>();
         }
     
         public int BranschId { get; set; }
@@ -27,6 +27,6 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ActiveCompanies> ActiveCompanies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Registered_Company> Registered_Company { get; set; }
+        public virtual ICollection<Bankruptcy> Bankruptcy { get; set; }
     }
 }

@@ -12,9 +12,13 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Bankruptcy_History
+    public partial class Bankruptcy
     {
         public int BranschId { get; set; }
         public int RegComp_Id { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+    
+        public virtual Registered_Company Registered_Company { get; set; }
+        public virtual Bransch Bransch { get; set; }
     }
 }

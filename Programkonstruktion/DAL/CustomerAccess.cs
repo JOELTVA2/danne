@@ -72,7 +72,7 @@ namespace DAL
                 while (reader.Read())
                 {
                     Customer cust = new Customer();
-                    cust.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    cust.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
                     cust.Name = reader["Name"].ToString();
 
                     customers.Add(cust);

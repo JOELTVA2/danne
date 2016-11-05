@@ -18,8 +18,8 @@ namespace Model
         public Registered_Company()
         {
             this.ActiveCompanies = new HashSet<ActiveCompanies>();
+            this.Bankruptcy = new HashSet<Bankruptcy>();
             this.Employee = new HashSet<Employee>();
-            this.Bransch = new HashSet<Bransch>();
         }
     
         public string Name { get; set; }
@@ -28,8 +28,8 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ActiveCompanies> ActiveCompanies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Bankruptcy> Bankruptcy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bransch> Bransch { get; set; }
+        public virtual ICollection<Employee> Employee { get; set; }
     }
 }

@@ -4,26 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa30b25aec734abaa50ed8fb47d9da14" Name="Diagram1">
-        <EntityTypeShape EntityType="LabSQL2Model.Active_Companies_History" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.ActiveCompanies" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Bankruptcy_History" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Bransch" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Bransch_History" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Customer" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Customer_History" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Economic_Association" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Economic_Association_History" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Employee" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Employee_History" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Registered_Company" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabSQL2Model.Registered_Company_History" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="74b36a79b8844e648b48b486d49f7685" Name="Diagram1">
+        <EntityTypeShape EntityType="LabSQL2Model.ActiveCompanies" Width="3" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Bankruptcy" Width="1.5" PointX="3.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Bransch" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Customer" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Economic_Association" Width="2.375" PointX="0.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Employee" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabSQL2Model.Registered_Company" Width="2.25" PointX="0.5" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__Bransch" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__EconAssoc" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK__ActiveComp__RegComp" ManuallyRouted="false" />
+        <AssociationConnector Association="LabSQL2Model.FK__Bankruptcy__RegComp_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="LabSQL2Model.FK_Bankruptcy_BranschId" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK_Customer_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="LabSQL2Model.FK_Emp_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="LabSQL2Model.Bankruptcy" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
