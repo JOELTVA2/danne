@@ -37,6 +37,9 @@ namespace WindowsFormsApplication3
             System.Windows.Forms.Button CreateCustomerButton;
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.cmbEmployeeCompany = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.showCustForE = new System.Windows.Forms.Button();
@@ -44,7 +47,6 @@ namespace WindowsFormsApplication3
             this.labelUserMsg = new System.Windows.Forms.Label();
             this.updateEmp = new System.Windows.Forms.Button();
             this.empNameTextBox = new System.Windows.Forms.TextBox();
-            this.employeeListbox = new System.Windows.Forms.ListBox();
             this.empDeleteButton = new System.Windows.Forms.Button();
             this.showAllButton = new System.Windows.Forms.Button();
             this.empIdTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +66,7 @@ namespace WindowsFormsApplication3
             CreateCustomerButton = new System.Windows.Forms.Button();
             this.tabCust.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +96,9 @@ namespace WindowsFormsApplication3
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.dgvEmployees);
+            this.tabPage7.Controls.Add(this.cmbEmployeeCompany);
+            this.tabPage7.Controls.Add(this.label6);
             this.tabPage7.Controls.Add(this.label2);
             this.tabPage7.Controls.Add(this.label1);
             this.tabPage7.Controls.Add(this.showCustForE);
@@ -100,7 +106,6 @@ namespace WindowsFormsApplication3
             this.tabPage7.Controls.Add(this.labelUserMsg);
             this.tabPage7.Controls.Add(this.updateEmp);
             this.tabPage7.Controls.Add(this.empNameTextBox);
-            this.tabPage7.Controls.Add(this.employeeListbox);
             this.tabPage7.Controls.Add(this.empDeleteButton);
             this.tabPage7.Controls.Add(this.showAllButton);
             this.tabPage7.Controls.Add(this.empIdTextBox);
@@ -108,6 +113,30 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // dgvEmployees
+            // 
+            this.dgvEmployees.AllowUserToAddRows = false;
+            this.dgvEmployees.AllowUserToDeleteRows = false;
+            this.dgvEmployees.AllowUserToResizeColumns = false;
+            this.dgvEmployees.AllowUserToResizeRows = false;
+            this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvEmployees, "dgvEmployees");
+            this.dgvEmployees.Name = "dgvEmployees";
+            this.dgvEmployees.ReadOnly = true;
+            this.dgvEmployees.RowHeadersVisible = false;
+            this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
+            // 
+            // cmbEmployeeCompany
+            // 
+            this.cmbEmployeeCompany.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbEmployeeCompany, "cmbEmployeeCompany");
+            this.cmbEmployeeCompany.Name = "cmbEmployeeCompany";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
             // label2
             // 
@@ -150,13 +179,6 @@ namespace WindowsFormsApplication3
             // 
             resources.ApplyResources(this.empNameTextBox, "empNameTextBox");
             this.empNameTextBox.Name = "empNameTextBox";
-            // 
-            // employeeListbox
-            // 
-            this.employeeListbox.FormattingEnabled = true;
-            resources.ApplyResources(this.employeeListbox, "employeeListbox");
-            this.employeeListbox.Name = "employeeListbox";
-            this.employeeListbox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // empDeleteButton
             // 
@@ -274,6 +296,7 @@ namespace WindowsFormsApplication3
             this.tabCust.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
@@ -284,7 +307,6 @@ namespace WindowsFormsApplication3
 
         private System.Windows.Forms.TabControl tabCust;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.ListBox employeeListbox;
         private System.Windows.Forms.TextBox empIdTextBox;
         private System.Windows.Forms.TextBox empNameTextBox;
         private System.Windows.Forms.Label labelUserMsg;
@@ -307,5 +329,8 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbEmployeeCompany;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dgvEmployees;
     }
 }

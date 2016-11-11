@@ -25,9 +25,9 @@ namespace WindowsFormsApplication3
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine(employeeListbox.SelectedItem);
-            currentEmployee = employeeListbox.SelectedItem as Employee;
-            empIdTextBox.Text = currentEmployee.Id.ToString();
+           // Debug.WriteLine(employeeListbox.SelectedItem);
+            //currentEmployee = employeeListbox.SelectedItem as Employee;
+            empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
             empNameTextBox.Text = currentEmployee.Name;
 
         }
@@ -50,11 +50,11 @@ namespace WindowsFormsApplication3
                 }
 
                 Employee emp = new Employee();
-                emp.Id = Int32.Parse(tempId);
+                emp.EmployeeId = Int32.Parse(tempId);
 
                 emp.Name = empNameTextBox.Text;
                 emp.Name = emp.Name.Trim();
-                if (emp.Id < 0)
+                if (emp.EmployeeId < 0)
                 {
                     labelUserMsg.Text = "Id is less than 0";
                     return;
@@ -64,6 +64,15 @@ namespace WindowsFormsApplication3
                     labelUserMsg.Text = "You need to write a name";
                     return;
                 }
+                if (cmbEmployeeCompany.SelectedItem == null)
+                {
+                    emp.CompanyId = 0;
+                }
+                else
+                {
+                    emp.CompanyId = Int32.Parse(cmbEmployeeCompany.SelectedItem.ToString());
+                }
+
                 bool success = EmployeeController.Create(emp);
 
                 if (success)
@@ -100,13 +109,9 @@ namespace WindowsFormsApplication3
         }
         private void FillListWithAllEmployees()
         {
-            IEnumerable<Employee> employees = EmployeeController.ReadAll();
-            employeeListbox.Items.Clear();
-            foreach (Employee emp in employees)
-            {
-                Debug.WriteLine(emp.Id + " " + emp.Name);
-                employeeListbox.Items.Add(emp);
-            }
+
+            dgvEmployees.DataSource = EmployeeController.ReadAll();
+
         }
 
         private void showAllEmployees_Click(object sender, EventArgs e)
@@ -118,12 +123,9 @@ namespace WindowsFormsApplication3
 
         private void tabCust_Click(object sender, EventArgs e)
         {
-            IEnumerable<Employee> employees = EmployeeController.ReadAll();
+           // IEnumerable<Employee> employees = EmployeeController.ReadAll();
             comboBox1.Items.Clear();
-            foreach (Employee emps in employees)
-            {
-                comboBox1.Items.Add(emps);
-            }
+   
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -133,7 +135,7 @@ namespace WindowsFormsApplication3
                 labelUserMsg.Text = "No employee chosen";
                 return;
             }
-            bool deleted = EmployeeController.Delete(currentEmployee.Id);
+            bool deleted = EmployeeController.Delete(currentEmployee.EmployeeId);
             if (deleted)
             {
                 labelUserMsg.Text = "Employee deleted";
@@ -189,7 +191,7 @@ namespace WindowsFormsApplication3
             empCustListBox.Items.Clear();
             foreach (Customer cust in customers)
             {
-                Debug.WriteLine(cust.Id + " " + cust.Name);
+                Debug.WriteLine(cust.CustomerId + " " + cust.Name);
                 empCustListBox.Items.Add(cust);
             }
 
@@ -200,7 +202,7 @@ namespace WindowsFormsApplication3
             custListBox.Items.Clear();
             foreach (Customer cust in customers)
             {
-                Debug.WriteLine(cust.Id + " " + cust.Name);
+                Debug.WriteLine(cust.CustomerId + " " + cust.Name);
                 custListBox.Items.Add(cust);
             }
         }
@@ -254,11 +256,11 @@ namespace WindowsFormsApplication3
                 }
 
                 Customer cust = new Customer();
-                cust.Id = Int32.Parse(tempId);
+                cust.CustomerId = Int32.Parse(tempId);
                 cust.Name = textBox2.Text;
                 cust.Name = cust.Name.Trim();
                 cust.Employee = currentEmployee;
-                if (cust.Id < 0)
+                if (cust.CustomerId < 0)
                 {
                     cLabelMsg.Text = "Id is less than 0";
                     return;
@@ -296,7 +298,7 @@ namespace WindowsFormsApplication3
         {
             Debug.WriteLine(custListBox.SelectedItem);
             currentCustomer = custListBox.SelectedItem as Customer;
-            textBox1.Text = currentCustomer.Id.ToString();
+            textBox1.Text = currentCustomer.CustomerId.ToString();
             textBox2.Text = currentCustomer.Name;
         }
 
@@ -324,7 +326,7 @@ namespace WindowsFormsApplication3
                 cLabelMsg.Text = "No customer chosen";
                 return;
             }
-            bool deleted = CustomerController.Delete(currentCustomer.Id);
+            bool deleted = CustomerController.Delete(currentCustomer.CustomerId);
             if (deleted)
             {
                 cLabelMsg.Text = "Customer deleted";
@@ -373,5 +375,22 @@ namespace WindowsFormsApplication3
         {
 
         }
+
+        private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int empId = Int32.Parse(dgvEmployees.CurrentRow.Cells[0].Value.ToString());
+                currentEmployee = EmployeeController.FindById(empId);
+                empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
+                empNameTextBox.Text = currentEmployee.Name;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+       
+        }
+
     }
 }

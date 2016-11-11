@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace DAL
 {
@@ -16,20 +17,14 @@ namespace DAL
         {
             try
             {
-                SqlConnection myConnection = new SqlConnection("user id=sa;" +
-                                               "password=hejhej10;server=MACK;" +
-                                               "Trusted_Connection=yes;" +
-                                               "database=LabSQL2;" +
-                                               "connection timeout=5");
+                SqlConnection myConnection = new SqlConnection(ConnectionString.connString);
 
                 myConnection.Open();
                 return myConnection;
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.StackTrace);
-
-                return null;
+                throw e;
             }
         }
 
@@ -44,7 +39,7 @@ namespace DAL
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.StackTrace);
+                throw e;
 
             }
 

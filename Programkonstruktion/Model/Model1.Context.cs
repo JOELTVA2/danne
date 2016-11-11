@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LabSQL2Entities3 : DbContext
+    public partial class Entities : DbContext
     {
-        public LabSQL2Entities3()
-            : base("name=LabSQL2Entities3")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

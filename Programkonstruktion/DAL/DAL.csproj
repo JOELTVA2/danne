@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranschAccess.cs" />
+    <Compile Include="ConnectionString.cs" />
     <Compile Include="Registred_CompanyAccess.cs" />
     <Compile Include="EmployeeAccess.cs" />
     <Compile Include="CustomerAccess.cs" />

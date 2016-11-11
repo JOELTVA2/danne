@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,13 @@ namespace Controller
         {
             return EmployeeAccess.FindById(id);
         }
-        public static IEnumerable<Employee> ReadAll()
+        public static DataTable ReadAll()
         {
             return EmployeeAccess.ReadAll();
         }
         public static bool Create(Employee emp)
         {
-            return EmployeeAccess.Create(emp);
+            return EmployeeAccess.CreateEmployee(emp);
         }
         public static bool Delete(int id)
         {

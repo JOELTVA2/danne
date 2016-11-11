@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace DAL
     public class EmployeeAccess
     {
 
-        public static IEnumerable<Employee> ReadAll()
+        public static DataTable ReadAll()
         {
 
-            List<Employee> employees = new List<Employee>();
+            DataTable employees = new DataTable();
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
@@ -28,16 +29,8 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_All_Employees", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Employee emp = new Employee();
-                    emp.EmployeeId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    emp.Name = reader["Name"].ToString();
-
-                    employees.Add(emp);
-                }
-
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(employees);
             }
             catch (Exception e)
             {
@@ -77,7 +70,7 @@ namespace DAL
                 if (reader.Read())
                 {
                     employee = new Employee();
-                    employee.EmployeeId = reader.GetInt32(reader.GetOrdinal("Id"));
+                    employee.EmployeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
                     employee.Name = reader["Name"].ToString();
                 }
             }
@@ -92,7 +85,7 @@ namespace DAL
             return employee;
         }
 
-        public static bool Create(Employee emp)
+        public static bool CreateEmployee(Employee emp)
         {
             int result = 0;
             SqlConnection conn = DBUtil.CreateConnection();
@@ -104,11 +97,17 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_New_Employee", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmpId", emp.EmployeeId);
-                SqlParameter nameParam = new SqlParameter("@EmpName", emp.Name);
-                SqlParameter companyParam = new SqlParameter("@CompanyId", emp.Name);
-                cmd.Parameters.Add(idParam);
-                cmd.Parameters.Add(nameParam);
+                cmd.Parameters.Add("@EmpId", SqlDbType.Int).Value = emp.EmployeeId;
+                cmd.Parameters.Add("@EmpName", SqlDbType.VarChar).Value = emp.Name;
+                if (emp.CompanyId == 0)
+                {
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = DBNull.Value;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = emp.CompanyId;
+                }
+
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -167,11 +166,17 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_Update_An_Employee", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@EmployeeId", emp.EmployeeId);
-                SqlParameter nameParam = new SqlParameter("@Name", emp.Name);
-                SqlParameter companyParam = new SqlParameter("@CompanyId", emp.Name);
-                cmd.Parameters.Add(idParam);
-                cmd.Parameters.Add(nameParam);
+
+                cmd.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = emp.EmployeeId;
+                cmd.Parameters.Add("@Name", SqlDbType.Int).Value = emp.Name;
+                if (emp.CompanyId == 0 || emp.CompanyId == null)
+                {
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = DBNull.Value;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = emp.CompanyId;
+                }
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)

@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LabSQL2Entities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bransch" EntityType="Self.Bransch" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
@@ -203,7 +203,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabSQL2ModelStoreContainer" CdmEntityContainer="LabSQL2Entities3">
+        <EntityContainerMapping StorageEntityContainer="LabSQL2ModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Bransch">
             <EntityTypeMapping TypeName="LabSQL2Model.Bransch">
               <MappingFragment StoreEntitySet="Bransch">
