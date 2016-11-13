@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -54,10 +55,10 @@ namespace DAL
 
         }
 
-        public static IEnumerable<Customer> ReadAll()
+        public static DataTable ReadAll()
         {
 
-            List<Customer> customers = new List<Customer>();
+            DataTable customers = new DataTable();
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
@@ -68,15 +69,8 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_All_Customers", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Customer cust = new Customer();
-                    cust.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    cust.Name = reader["Name"].ToString();
-
-                    customers.Add(cust);
-                }
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(customers);
 
             }
             catch (Exception e)
@@ -108,21 +102,20 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_Find_A_Customer_By_ID", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@Id", id);
-                cmd.Parameters.Add(idParam);
-
+                cmd.Parameters.AddWithValue("@CustId", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
                     customer = new Customer();
-                    customer.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
+                    customer.CustomerId = reader.GetInt32(reader.GetOrdinal("CustomerId"));
                     customer.Name = reader["Name"].ToString();
+                    customer.EmployeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.StackTrace);
+                throw e;
             }
             finally
             {
@@ -143,9 +136,10 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_New_Customer", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CustomerId", cust.CustomerId);
-                cmd.Parameters.AddWithValue("@Name", cust.Name);
-                cmd.Parameters.AddWithValue("@EmployeeId", cust.Employee.EmployeeId);
+
+                cmd.Parameters.AddWithValue("@CustId", SqlDbType.Int).Value = cust.CustomerId;
+                cmd.Parameters.AddWithValue("@CustName", SqlDbType.VarChar).Value = cust.Name;
+                cmd.Parameters.AddWithValue("@EmpId", SqlDbType.Int).Value = cust.Employee.EmployeeId;
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)

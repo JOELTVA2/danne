@@ -38,7 +38,7 @@ namespace WindowsFormsApplication3
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
-            this.cmbEmployeeCompany = new System.Windows.Forms.ComboBox();
+            this.cmbCompanyEmployee = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,23 +51,24 @@ namespace WindowsFormsApplication3
             this.showAllButton = new System.Windows.Forms.Button();
             this.empIdTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cmbEmployeesCustomer = new System.Windows.Forms.ComboBox();
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cLabelMsg = new System.Windows.Forms.Label();
             this.updateCustButton = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.txtCustId = new System.Windows.Forms.TextBox();
             this.deleteCustFromE = new System.Windows.Forms.Button();
             this.showAllCust = new System.Windows.Forms.Button();
-            this.custListBox = new System.Windows.Forms.ListBox();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
             this.tabCust.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
             // 
             // createEmpButton
@@ -97,7 +98,7 @@ namespace WindowsFormsApplication3
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.dgvEmployees);
-            this.tabPage7.Controls.Add(this.cmbEmployeeCompany);
+            this.tabPage7.Controls.Add(this.cmbCompanyEmployee);
             this.tabPage7.Controls.Add(this.label6);
             this.tabPage7.Controls.Add(this.label2);
             this.tabPage7.Controls.Add(this.label1);
@@ -127,11 +128,11 @@ namespace WindowsFormsApplication3
             this.dgvEmployees.RowHeadersVisible = false;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
             // 
-            // cmbEmployeeCompany
+            // cmbCompanyEmployee
             // 
-            this.cmbEmployeeCompany.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbEmployeeCompany, "cmbEmployeeCompany");
-            this.cmbEmployeeCompany.Name = "cmbEmployeeCompany";
+            this.cmbCompanyEmployee.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbCompanyEmployee, "cmbCompanyEmployee");
+            this.cmbCompanyEmployee.Name = "cmbCompanyEmployee";
             // 
             // label6
             // 
@@ -202,21 +203,41 @@ namespace WindowsFormsApplication3
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cmbEmployeesCustomer);
+            this.tabPage1.Controls.Add(this.dgvCustomers);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.cLabelMsg);
             this.tabPage1.Controls.Add(this.updateCustButton);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtCustName);
+            this.tabPage1.Controls.Add(this.txtCustId);
             this.tabPage1.Controls.Add(CreateCustomerButton);
             this.tabPage1.Controls.Add(this.deleteCustFromE);
             this.tabPage1.Controls.Add(this.showAllCust);
-            this.tabPage1.Controls.Add(this.custListBox);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cmbEmployeesCustomer
+            // 
+            this.cmbEmployeesCustomer.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbEmployeesCustomer, "cmbEmployeesCustomer");
+            this.cmbEmployeesCustomer.Name = "cmbEmployeesCustomer";
+            // 
+            // dgvCustomers
+            // 
+            this.dgvCustomers.AllowUserToAddRows = false;
+            this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.AllowUserToResizeColumns = false;
+            this.dgvCustomers.AllowUserToResizeRows = false;
+            this.dgvCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvCustomers, "dgvCustomers");
+            this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.ReadOnly = true;
+            this.dgvCustomers.RowHeadersVisible = false;
+            this.dgvCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellClick);
             // 
             // label5
             // 
@@ -233,14 +254,6 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "Name";
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // cLabelMsg
             // 
             resources.ApplyResources(this.cLabelMsg, "cLabelMsg");
@@ -253,17 +266,17 @@ namespace WindowsFormsApplication3
             this.updateCustButton.UseVisualStyleBackColor = true;
             this.updateCustButton.Click += new System.EventHandler(this.updateCustButton_Click);
             // 
-            // textBox2
+            // txtCustName
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            resources.ApplyResources(this.txtCustName, "txtCustName");
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox1
+            // txtCustId
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            resources.ApplyResources(this.txtCustId, "txtCustId");
+            this.txtCustId.Name = "txtCustId";
+            this.txtCustId.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // deleteCustFromE
             // 
@@ -279,13 +292,6 @@ namespace WindowsFormsApplication3
             this.showAllCust.UseVisualStyleBackColor = true;
             this.showAllCust.Click += new System.EventHandler(this.showAllCust_Click);
             // 
-            // custListBox
-            // 
-            this.custListBox.FormattingEnabled = true;
-            resources.ApplyResources(this.custListBox, "custListBox");
-            this.custListBox.Name = "custListBox";
-            this.custListBox.SelectedIndexChanged += new System.EventHandler(this.cListBox_SelectedIndexChanged);
-            // 
             // Gui
             // 
             resources.ApplyResources(this, "$this");
@@ -299,6 +305,7 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,13 +322,11 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Button updateEmp;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button updateCustButton;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.TextBox txtCustId;
         private System.Windows.Forms.Button deleteCustFromE;
         private System.Windows.Forms.Button showAllCust;
-        private System.Windows.Forms.ListBox custListBox;
         private System.Windows.Forms.Label cLabelMsg;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ListBox empCustListBox;
         private System.Windows.Forms.Button showCustForE;
         private System.Windows.Forms.Label label1;
@@ -329,8 +334,10 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbEmployeeCompany;
+        private System.Windows.Forms.ComboBox cmbCompanyEmployee;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvEmployees;
+        private System.Windows.Forms.DataGridView dgvCustomers;
+        private System.Windows.Forms.ComboBox cmbEmployeesCustomer;
     }
 }

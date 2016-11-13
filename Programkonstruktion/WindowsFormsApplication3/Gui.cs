@@ -21,6 +21,7 @@ namespace WindowsFormsApplication3
         {
 
             InitializeComponent();
+            updateCmbEmployee();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,13 +65,13 @@ namespace WindowsFormsApplication3
                     labelUserMsg.Text = "You need to write a name";
                     return;
                 }
-                if (cmbEmployeeCompany.SelectedItem == null)
+                if (cmbCompanyEmployee.SelectedItem == null)
                 {
                     emp.CompanyId = 0;
                 }
                 else
                 {
-                    emp.CompanyId = Int32.Parse(cmbEmployeeCompany.SelectedItem.ToString());
+                    emp.CompanyId = Int32.Parse(cmbCompanyEmployee.SelectedItem.ToString());
                 }
 
                 bool success = EmployeeController.Create(emp);
@@ -109,23 +110,22 @@ namespace WindowsFormsApplication3
         }
         private void FillListWithAllEmployees()
         {
-
             dgvEmployees.DataSource = EmployeeController.ReadAll();
-
         }
 
         private void showAllEmployees_Click(object sender, EventArgs e)
         {
             FillListWithAllEmployees();
             labelUserMsg.Text = "All Employees listed";
-
         }
 
         private void tabCust_Click(object sender, EventArgs e)
         {
            // IEnumerable<Employee> employees = EmployeeController.ReadAll();
-            comboBox1.Items.Clear();
-   
+            cmbEmployeesCustomer.Items.Clear();
+            updateCmbEmployee();
+
+
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -198,13 +198,7 @@ namespace WindowsFormsApplication3
         }
         private void FillListWithAllCustomers()
         {
-            IEnumerable<Customer> customers = CustomerController.ReadAll();
-            custListBox.Items.Clear();
-            foreach (Customer cust in customers)
-            {
-                Debug.WriteLine(cust.CustomerId + " " + cust.Name);
-                custListBox.Items.Add(cust);
-            }
+            dgvCustomers.DataSource = CustomerController.ReadAll();
         }
 
         private void showAllCust_Click(object sender, EventArgs e)
@@ -216,9 +210,7 @@ namespace WindowsFormsApplication3
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentEmployee = comboBox1.SelectedItem as Employee;
-
-
+            currentEmployee = cmbEmployeesCustomer.SelectedItem as Employee;
         }
 
 
@@ -238,8 +230,10 @@ namespace WindowsFormsApplication3
         {
             try
             {
-                currentEmployee = comboBox1.SelectedItem as Employee;
+                currentEmployee = cmbEmployeesCustomer.SelectedItem as Employee;
 
+                int empId = Int32.Parse(cmbEmployeesCustomer.SelectedItem.ToString());
+                currentEmployee = EmployeeController.FindById(empId);
 
                 if (currentEmployee == null)
                 {
@@ -247,7 +241,7 @@ namespace WindowsFormsApplication3
                     return;
                 }
 
-                String tempId = textBox1.Text;
+                String tempId = txtCustId.Text;
                 tempId = tempId.Trim();
                 if (String.IsNullOrEmpty(tempId))
                 {
@@ -257,7 +251,7 @@ namespace WindowsFormsApplication3
 
                 Customer cust = new Customer();
                 cust.CustomerId = Int32.Parse(tempId);
-                cust.Name = textBox2.Text;
+                cust.Name = txtCustName.Text;
                 cust.Name = cust.Name.Trim();
                 cust.Employee = currentEmployee;
                 if (cust.CustomerId < 0)
@@ -296,10 +290,10 @@ namespace WindowsFormsApplication3
 
         private void cListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine(custListBox.SelectedItem);
-            currentCustomer = custListBox.SelectedItem as Customer;
-            textBox1.Text = currentCustomer.CustomerId.ToString();
-            textBox2.Text = currentCustomer.Name;
+            currentCustomer = cmbCompanyEmployee.SelectedItem as Customer;
+            txtCustId.Text = currentCustomer.CustomerId.ToString();
+            txtCustName.Text = currentCustomer.Name;
+         
         }
 
         private void empCustListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -351,14 +345,14 @@ namespace WindowsFormsApplication3
                     return;
                 }
 
-                tempName = textBox2.Text;
+                tempName = txtCustName.Text;
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
                 {
                     cLabelMsg.Text = "Name field is empty";
                     return;
                 }
-                currentCustomer.Name = textBox2.Text;
+                currentCustomer.Name = txtCustName.Text;
 
                 CustomerController.Update(currentCustomer);
                 FillListWithAllCustomers();
@@ -390,6 +384,58 @@ namespace WindowsFormsApplication3
                 throw ex;
             }
        
+        }
+
+        private void dgvCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                CustomerClear();
+                int custId = Int32.Parse(dgvCustomers.CurrentRow.Cells[0].Value.ToString());
+                currentCustomer = CustomerController.FindById(custId);
+                txtCustId.Text = currentCustomer.CustomerId.ToString();
+                txtCustName.Text = currentCustomer.Name;
+                cmbEmployeesCustomer.SelectedText = currentCustomer.EmployeeId.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int empId = Int32.Parse(dgvEmployees.CurrentRow.Cells[0].Value.ToString());
+                currentEmployee = EmployeeController.FindById(empId);
+                empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
+                empNameTextBox.Text = currentEmployee.Name;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void updateCmbEmployee()
+        {
+            DataTable employees = EmployeeController.ReadAll();
+
+            for (int i = 0; i < employees.Rows.Count; i++)
+            {
+                cmbEmployeesCustomer.Items.Add(employees.Rows[i]["EmployeeId"]);
+            }
+
+        }
+
+        private void CustomerClear()
+        {
+            txtCustId.Clear();
+            txtCustName.Clear();
+            cmbEmployeesCustomer.Text = "";
         }
 
     }
