@@ -35,6 +35,8 @@ namespace WindowsFormsApplication3
             System.Windows.Forms.Button createEmpButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gui));
             System.Windows.Forms.Button CreateCustomerButton;
+            System.Windows.Forms.Button button2;
+            System.Windows.Forms.Button CreateBranchButton;
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
@@ -62,13 +64,41 @@ namespace WindowsFormsApplication3
             this.txtCustId = new System.Windows.Forms.TextBox();
             this.deleteCustFromE = new System.Windows.Forms.Button();
             this.showAllCust = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.UpdateBranchButton = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.DeleteBranchButton = new System.Windows.Forms.Button();
+            this.ShowAllBranchButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBranches = new System.Windows.Forms.DataGridView();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
+            button2 = new System.Windows.Forms.Button();
+            CreateBranchButton = new System.Windows.Forms.Button();
             this.tabCust.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).BeginInit();
             this.SuspendLayout();
             // 
             // createEmpButton
@@ -89,6 +119,8 @@ namespace WindowsFormsApplication3
             // 
             this.tabCust.Controls.Add(this.tabPage7);
             this.tabCust.Controls.Add(this.tabPage1);
+            this.tabCust.Controls.Add(this.tabPage2);
+            this.tabCust.Controls.Add(this.tabPage3);
             resources.ApplyResources(this.tabCust, "tabCust");
             this.tabCust.Name = "tabCust";
             this.tabCust.SelectedIndex = 0;
@@ -292,6 +324,162 @@ namespace WindowsFormsApplication3
             this.showAllCust.UseVisualStyleBackColor = true;
             this.showAllCust.Click += new System.EventHandler(this.showAllCust_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(button2);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button4);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgvBranches);
+            this.tabPage3.Controls.Add(this.comboBox2);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.UpdateBranchButton);
+            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(CreateBranchButton);
+            this.tabPage3.Controls.Add(this.DeleteBranchButton);
+            this.tabPage3.Controls.Add(this.ShowAllBranchButton);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            // 
+            // button2
+            // 
+            resources.ApplyResources(button2, "button2");
+            button2.Name = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.Name = "comboBox2";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // UpdateBranchButton
+            // 
+            resources.ApplyResources(this.UpdateBranchButton, "UpdateBranchButton");
+            this.UpdateBranchButton.Name = "UpdateBranchButton";
+            this.UpdateBranchButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            // 
+            // CreateBranchButton
+            // 
+            resources.ApplyResources(CreateBranchButton, "CreateBranchButton");
+            CreateBranchButton.Name = "CreateBranchButton";
+            CreateBranchButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteBranchButton
+            // 
+            resources.ApplyResources(this.DeleteBranchButton, "DeleteBranchButton");
+            this.DeleteBranchButton.Name = "DeleteBranchButton";
+            this.DeleteBranchButton.UseVisualStyleBackColor = true;
+            // 
+            // ShowAllBranchButton
+            // 
+            resources.ApplyResources(this.ShowAllBranchButton, "ShowAllBranchButton");
+            this.ShowAllBranchButton.Name = "ShowAllBranchButton";
+            this.ShowAllBranchButton.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.Name = "dataGridView1";
+            // 
+            // dgvBranches
+            // 
+            this.dgvBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvBranches, "dgvBranches");
+            this.dgvBranches.Name = "dgvBranches";
+            // 
             // Gui
             // 
             resources.ApplyResources(this, "$this");
@@ -306,6 +494,12 @@ namespace WindowsFormsApplication3
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,5 +533,27 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.DataGridView dgvEmployees;
         private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.ComboBox cmbEmployeesCustomer;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button UpdateBranchButton;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button DeleteBranchButton;
+        private System.Windows.Forms.Button ShowAllBranchButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvBranches;
     }
 }

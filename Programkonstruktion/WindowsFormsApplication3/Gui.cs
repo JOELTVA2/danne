@@ -358,10 +358,10 @@ namespace WindowsFormsApplication3
                 FillListWithAllCustomers();
                 cLabelMsg.Text = "Customer updated";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 
