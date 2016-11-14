@@ -75,13 +75,11 @@ namespace WindowsFormsApplication3
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.UpdateBranchButton = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtBranchName = new System.Windows.Forms.TextBox();
+            this.txtBranchId = new System.Windows.Forms.TextBox();
             this.DeleteBranchButton = new System.Windows.Forms.Button();
             this.ShowAllBranchButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -344,13 +342,11 @@ namespace WindowsFormsApplication3
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvBranches);
-            this.tabPage3.Controls.Add(this.comboBox2);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.UpdateBranchButton);
-            this.tabPage3.Controls.Add(this.textBox3);
-            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.txtBranchName);
+            this.tabPage3.Controls.Add(this.txtBranchId);
             this.tabPage3.Controls.Add(CreateBranchButton);
             this.tabPage3.Controls.Add(this.DeleteBranchButton);
             this.tabPage3.Controls.Add(this.ShowAllBranchButton);
@@ -413,12 +409,6 @@ namespace WindowsFormsApplication3
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.Name = "comboBox2";
-            // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
@@ -429,32 +419,28 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
             // UpdateBranchButton
             // 
             resources.ApplyResources(this.UpdateBranchButton, "UpdateBranchButton");
             this.UpdateBranchButton.Name = "UpdateBranchButton";
             this.UpdateBranchButton.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txtBranchName
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.txtBranchName, "txtBranchName");
+            this.txtBranchName.Name = "txtBranchName";
             // 
-            // textBox4
+            // txtBranchId
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.txtBranchId, "txtBranchId");
+            this.txtBranchId.Name = "txtBranchId";
             // 
             // CreateBranchButton
             // 
             resources.ApplyResources(CreateBranchButton, "CreateBranchButton");
             CreateBranchButton.Name = "CreateBranchButton";
             CreateBranchButton.UseVisualStyleBackColor = true;
+            CreateBranchButton.Click += new System.EventHandler(this.CreateBranchButton_Click);
             // 
             // DeleteBranchButton
             // 
@@ -467,6 +453,7 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.ShowAllBranchButton, "ShowAllBranchButton");
             this.ShowAllBranchButton.Name = "ShowAllBranchButton";
             this.ShowAllBranchButton.UseVisualStyleBackColor = true;
+            this.ShowAllBranchButton.Click += new System.EventHandler(this.ShowAllBranchButton_Click);
             // 
             // dataGridView1
             // 
@@ -544,13 +531,11 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button UpdateBranchButton;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtBranchName;
+        private System.Windows.Forms.TextBox txtBranchId;
         private System.Windows.Forms.Button DeleteBranchButton;
         private System.Windows.Forms.Button ShowAllBranchButton;
         private System.Windows.Forms.DataGridView dataGridView1;

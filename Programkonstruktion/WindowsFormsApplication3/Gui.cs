@@ -438,5 +438,63 @@ namespace WindowsFormsApplication3
             cmbEmployeesCustomer.Text = "";
         }
 
+        private void CreateBranchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String tempId = txtBranchId.Text;
+                tempId = tempId.Trim();
+                if (String.IsNullOrEmpty(tempId))
+                {
+                    labelUserMsg.Text = "Id box is empty";
+                    return;
+                }
+
+                Bransch bransch = new Bransch();
+                bransch.BranschId = Int32.Parse(tempId);
+
+                bransch.Name = txtBranchName.Text;
+                bransch.Name = bransch.Name.Trim();
+                if (bransch.BranschId < 0)
+                {
+                    labelUserMsg.Text = "Id is less than 0";
+                    return;
+                }
+                if (String.IsNullOrEmpty(bransch.Name))
+                {
+                    labelUserMsg.Text = "You need to write a name";
+                    return;
+                }
+
+                bool success = BranschController.CreateBransch(bransch);
+
+                if (success)
+                {
+
+                    labelUserMsg.Text = "Employee Created";
+                }
+                else
+                {
+                    labelUserMsg.Text = "Failed to create Employee";
+                }
+
+            }
+            catch (FormatException)
+            {
+
+                labelUserMsg.Text = "Only numbers in ID";
+            }
+            catch (OverflowException)
+            {
+                labelUserMsg.Text = "Too many digits in ID";
+            }
+            FillListWithAllEmployees();
+        }
+
+        private void ShowAllBranchButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+    
 }

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class BranschAccess
+    public class BranschAccess
     {
 
 
-        public static IEnumerable<Bransch> ReadAll()
+        public static DataTable ReadAll()
         {
 
-            List<Bransch> bransches = new List<Bransch>();
+            DataTable bransches = new DataTable();
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
@@ -26,15 +27,8 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Bransch bransch = new Bransch();
-                    bransch.BranschId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    bransch.Name = reader["Name"].ToString();
-
-                    bransches.Add(bransch);
-                }
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(bransches);
 
             }
             catch (Exception e)
@@ -45,11 +39,8 @@ namespace DAL
             finally
             {
                 DBUtil.CloseConnection(conn);
-
-
             }
             return bransches;
-
         }
 
 
@@ -101,9 +92,8 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_New_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@BranschId", bransch.BranschId);
-                cmd.Parameters.AddWithValue("@Name", bransch.Name);
-
+                cmd.Parameters.AddWithValue("@Bransch_Id", bransch.BranschId);
+                cmd.Parameters.AddWithValue("@Bransch_Name", bransch.Name);
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
