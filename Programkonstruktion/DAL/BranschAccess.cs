@@ -25,7 +25,7 @@ namespace DAL
             try
             {
 
-                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransch", conn);
+                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransches", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(bransches);
@@ -92,8 +92,9 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_New_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Bransch_Id", bransch.BranschId);
-                cmd.Parameters.AddWithValue("@Bransch_Name", bransch.Name);
+
+                cmd.Parameters.AddWithValue("@BranschId", SqlDbType.Int).Value = bransch.BranschId;
+                cmd.Parameters.AddWithValue("@Bransch_Name", SqlDbType.VarChar).Value = bransch.Name;
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -110,7 +111,7 @@ namespace DAL
             }
             return true;
         }
-        public static bool Delete(int id)
+        public static bool DeleteBransch(int id)
         {
             int result = 0;
             SqlConnection conn = DBUtil.CreateConnection();
@@ -120,9 +121,9 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_Delete_A_Customer", conn);
+                SqlCommand cmd = new SqlCommand("usp_Delete_A_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@Id", id);
+                SqlParameter idParam = new SqlParameter("@BranschId", id);
                 cmd.Parameters.Add(idParam);
                 result = cmd.ExecuteNonQuery();
             }
@@ -153,10 +154,8 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Update_A_Bransch", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@BranschId", bransch.BranschId);
-                SqlParameter nameParam = new SqlParameter("@Name", bransch.Name);
-                cmd.Parameters.Add(idParam);
-                cmd.Parameters.Add(nameParam);
+                cmd.Parameters.AddWithValue("@Bransch_Id", SqlDbType.Int).Value = bransch.BranschId;
+                cmd.Parameters.AddWithValue("@Bransch_Name", SqlDbType.VarChar).Value = bransch.Name;        
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)

@@ -17,20 +17,14 @@ namespace WindowsFormsApplication3
     {
         private Employee currentEmployee { get; set; }
         private Customer currentCustomer { get; set; }
+        private Bransch currentBransch { get; set; }
+        private Registered_Company currentCompany { get; set; }
+
         public Gui()
         {
 
             InitializeComponent();
             updateCmbEmployee();
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           // Debug.WriteLine(employeeListbox.SelectedItem);
-            //currentEmployee = employeeListbox.SelectedItem as Employee;
-            empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
-            empNameTextBox.Text = currentEmployee.Name;
-
         }
 
         private void empIdTextBox_TextChanged(object sender, EventArgs e)
@@ -404,6 +398,41 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void dgvBranches_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int branchId = Int32.Parse(dgvBranches.CurrentRow.Cells[0].Value.ToString());
+                currentBransch = BranschController.FindById(branchId);
+                txtBranchId.Text = currentBransch.BranschId.ToString();
+                txtBranchName.Text = currentBransch.Name;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        private void dgvCompanies_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //fixa till när det kommer
+            try
+            {
+                int empId = Int32.Parse(dgvEmployees.CurrentRow.Cells[0].Value.ToString());
+                currentEmployee = EmployeeController.FindById(empId);
+                empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
+                empNameTextBox.Text = currentEmployee.Name;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -471,11 +500,11 @@ namespace WindowsFormsApplication3
                 if (success)
                 {
 
-                    labelUserMsg.Text = "Employee Created";
+                    labelUserMsg.Text = "Bransch Created";
                 }
                 else
                 {
-                    labelUserMsg.Text = "Failed to create Employee";
+                    labelUserMsg.Text = "Failed to create Bransch";
                 }
 
             }
@@ -491,8 +520,68 @@ namespace WindowsFormsApplication3
             FillListWithAllEmployees();
         }
 
+        private void FillAllBranches()
+        {
+            dgvBranches.DataSource = BranschController.ReadAll();
+        }
+
         private void ShowAllBranchButton_Click(object sender, EventArgs e)
         {
+            FillAllBranches();
+        }
+
+        private void DeleteBranchButton_Click(object sender, EventArgs e)
+        {
+            if (currentBransch == null)
+            {
+                labelUserMsg.Text = "No employee chosen";
+                return;
+            }
+            bool deleted = BranschController.DeleteBransch(currentBransch.BranschId);
+            if (deleted)
+            {
+                labelUserMsg.Text = "Employee deleted";
+            }
+            else
+            {
+                labelUserMsg.Text = "Employee not deleted";
+            }
+            FillAllBranches();
+
+
+        }
+
+        private void UpdateBranchButton_Click(object sender, EventArgs e)
+        {
+            string tempName;
+            try
+            {
+
+                if (currentBransch == null)
+                {
+                    labelUserMsg.Text = "No employee chosen";
+                    return;
+                }
+
+                tempName = txtBranchName.Text;
+                tempName = tempName.Trim();
+                if (String.IsNullOrEmpty(tempName))
+                {
+                    labelUserMsg.Text = "Name field is empty";
+                    return;
+                }
+                currentBransch.Name = txtBranchName.Text;
+
+                BranschController.UpdateBransch(currentBransch);
+                FillAllBranches();
+                labelUserMsg.Text = "Bransch updated";
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
 
         }
     }

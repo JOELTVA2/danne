@@ -35,7 +35,7 @@ namespace WindowsFormsApplication3
             System.Windows.Forms.Button createEmpButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gui));
             System.Windows.Forms.Button CreateCustomerButton;
-            System.Windows.Forms.Button button2;
+            System.Windows.Forms.Button btnCompanyCreate;
             System.Windows.Forms.Button CreateBranchButton;
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
@@ -65,16 +65,18 @@ namespace WindowsFormsApplication3
             this.deleteCustFromE = new System.Windows.Forms.Button();
             this.showAllCust = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvCompanies = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCompanyUpdate = new System.Windows.Forms.Button();
+            this.txtCompanyName = new System.Windows.Forms.TextBox();
+            this.txtCompanyId = new System.Windows.Forms.TextBox();
+            this.CompanyDelete = new System.Windows.Forms.Button();
+            this.btnCompanyShowAll = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvBranches = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.UpdateBranchButton = new System.Windows.Forms.Button();
@@ -82,11 +84,9 @@ namespace WindowsFormsApplication3
             this.txtBranchId = new System.Windows.Forms.TextBox();
             this.DeleteBranchButton = new System.Windows.Forms.Button();
             this.ShowAllBranchButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dgvBranches = new System.Windows.Forms.DataGridView();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            btnCompanyCreate = new System.Windows.Forms.Button();
             CreateBranchButton = new System.Windows.Forms.Button();
             this.tabCust.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -94,8 +94,8 @@ namespace WindowsFormsApplication3
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,6 +112,19 @@ namespace WindowsFormsApplication3
             CreateCustomerButton.Name = "CreateCustomerButton";
             CreateCustomerButton.UseVisualStyleBackColor = true;
             CreateCustomerButton.Click += new System.EventHandler(this.CreateCustomerButton_Click);
+            // 
+            // btnCompanyCreate
+            // 
+            resources.ApplyResources(btnCompanyCreate, "btnCompanyCreate");
+            btnCompanyCreate.Name = "btnCompanyCreate";
+            btnCompanyCreate.UseVisualStyleBackColor = true;
+            // 
+            // CreateBranchButton
+            // 
+            resources.ApplyResources(CreateBranchButton, "CreateBranchButton");
+            CreateBranchButton.Name = "CreateBranchButton";
+            CreateBranchButton.UseVisualStyleBackColor = true;
+            CreateBranchButton.Click += new System.EventHandler(this.CreateBranchButton_Click);
             // 
             // tabCust
             // 
@@ -324,35 +337,26 @@ namespace WindowsFormsApplication3
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dgvCompanies);
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(button2);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.btnCompanyUpdate);
+            this.tabPage2.Controls.Add(this.txtCompanyName);
+            this.tabPage2.Controls.Add(this.txtCompanyId);
+            this.tabPage2.Controls.Add(btnCompanyCreate);
+            this.tabPage2.Controls.Add(this.CompanyDelete);
+            this.tabPage2.Controls.Add(this.btnCompanyShowAll);
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // dgvCompanies
             // 
-            this.tabPage3.Controls.Add(this.dgvBranches);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.UpdateBranchButton);
-            this.tabPage3.Controls.Add(this.txtBranchName);
-            this.tabPage3.Controls.Add(this.txtBranchId);
-            this.tabPage3.Controls.Add(CreateBranchButton);
-            this.tabPage3.Controls.Add(this.DeleteBranchButton);
-            this.tabPage3.Controls.Add(this.ShowAllBranchButton);
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.dgvCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvCompanies, "dgvCompanies");
+            this.dgvCompanies.Name = "dgvCompanies";
             // 
             // comboBox1
             // 
@@ -375,39 +379,62 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // button1
+            // btnCompanyUpdate
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnCompanyUpdate, "btnCompanyUpdate");
+            this.btnCompanyUpdate.Name = "btnCompanyUpdate";
+            this.btnCompanyUpdate.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtCompanyName
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.txtCompanyName, "txtCompanyName");
+            this.txtCompanyName.Name = "txtCompanyName";
             // 
-            // textBox2
+            // txtCompanyId
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.txtCompanyId, "txtCompanyId");
+            this.txtCompanyId.Name = "txtCompanyId";
             // 
-            // button2
+            // CompanyDelete
             // 
-            resources.ApplyResources(button2, "button2");
-            button2.Name = "button2";
-            button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.CompanyDelete, "CompanyDelete");
+            this.CompanyDelete.Name = "CompanyDelete";
+            this.CompanyDelete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCompanyShowAll
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnCompanyShowAll, "btnCompanyShowAll");
+            this.btnCompanyShowAll.Name = "btnCompanyShowAll";
+            this.btnCompanyShowAll.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // tabPage3
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tabPage3.Controls.Add(this.dgvBranches);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.UpdateBranchButton);
+            this.tabPage3.Controls.Add(this.txtBranchName);
+            this.tabPage3.Controls.Add(this.txtBranchId);
+            this.tabPage3.Controls.Add(CreateBranchButton);
+            this.tabPage3.Controls.Add(this.DeleteBranchButton);
+            this.tabPage3.Controls.Add(this.ShowAllBranchButton);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvBranches
+            // 
+            this.dgvBranches.AllowUserToAddRows = false;
+            this.dgvBranches.AllowUserToDeleteRows = false;
+            this.dgvBranches.AllowUserToResizeColumns = false;
+            this.dgvBranches.AllowUserToResizeRows = false;
+            this.dgvBranches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvBranches, "dgvBranches");
+            this.dgvBranches.Name = "dgvBranches";
+            this.dgvBranches.ReadOnly = true;
+            this.dgvBranches.RowHeadersVisible = false;
+            this.dgvBranches.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBranches_CellClick);
             // 
             // label10
             // 
@@ -424,6 +451,7 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.UpdateBranchButton, "UpdateBranchButton");
             this.UpdateBranchButton.Name = "UpdateBranchButton";
             this.UpdateBranchButton.UseVisualStyleBackColor = true;
+            this.UpdateBranchButton.Click += new System.EventHandler(this.UpdateBranchButton_Click);
             // 
             // txtBranchName
             // 
@@ -435,18 +463,12 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.txtBranchId, "txtBranchId");
             this.txtBranchId.Name = "txtBranchId";
             // 
-            // CreateBranchButton
-            // 
-            resources.ApplyResources(CreateBranchButton, "CreateBranchButton");
-            CreateBranchButton.Name = "CreateBranchButton";
-            CreateBranchButton.UseVisualStyleBackColor = true;
-            CreateBranchButton.Click += new System.EventHandler(this.CreateBranchButton_Click);
-            // 
             // DeleteBranchButton
             // 
             resources.ApplyResources(this.DeleteBranchButton, "DeleteBranchButton");
             this.DeleteBranchButton.Name = "DeleteBranchButton";
             this.DeleteBranchButton.UseVisualStyleBackColor = true;
+            this.DeleteBranchButton.Click += new System.EventHandler(this.DeleteBranchButton_Click);
             // 
             // ShowAllBranchButton
             // 
@@ -454,18 +476,6 @@ namespace WindowsFormsApplication3
             this.ShowAllBranchButton.Name = "ShowAllBranchButton";
             this.ShowAllBranchButton.UseVisualStyleBackColor = true;
             this.ShowAllBranchButton.Click += new System.EventHandler(this.ShowAllBranchButton_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
-            // 
-            // dgvBranches
-            // 
-            this.dgvBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dgvBranches, "dgvBranches");
-            this.dgvBranches.Name = "dgvBranches";
             // 
             // Gui
             // 
@@ -483,9 +493,9 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).EndInit();
             this.ResumeLayout(false);
 
@@ -526,11 +536,11 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCompanyUpdate;
+        private System.Windows.Forms.TextBox txtCompanyName;
+        private System.Windows.Forms.TextBox txtCompanyId;
+        private System.Windows.Forms.Button CompanyDelete;
+        private System.Windows.Forms.Button btnCompanyShowAll;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button UpdateBranchButton;
@@ -538,7 +548,7 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.TextBox txtBranchId;
         private System.Windows.Forms.Button DeleteBranchButton;
         private System.Windows.Forms.Button ShowAllBranchButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCompanies;
         private System.Windows.Forms.DataGridView dgvBranches;
     }
 }

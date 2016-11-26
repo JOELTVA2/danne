@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,24 @@ namespace DAL
 {
     class Registred_CompanyAccess
     {
-        public static IEnumerable<Employee> ReadAllEmployeesForACompany(Registered_Company rc)
-        { 
+        public static DataTable ReadAllEmployeesForACompany(Registered_Company rc)
+        {
+
+            DataTable bransches = new DataTable();
+            SqlConnection conn = DBUtil.CreateConnection();
+            if (conn == null)
+            {
+                return bransches;
+            }
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransches", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(bransches);
+
+            }
 
             List<Employee> employees = new List<Employee>();
             SqlConnection conn = DBUtil.CreateConnection();

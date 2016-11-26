@@ -28,5 +28,9 @@ namespace Controller
         {
             return BranschAccess.UpdateBransch(bransch);
         }
+        public static bool DeleteBransch(int branschId)
+        {
+            return BranschAccess.DeleteBransch(branschId);
+        }
     }
 }
