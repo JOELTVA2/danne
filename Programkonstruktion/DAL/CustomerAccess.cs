@@ -160,7 +160,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_Delete_A_Customer", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@Id", id);
+                SqlParameter idParam = new SqlParameter("@CustId", id);
                 cmd.Parameters.Add(idParam);
                 result = cmd.ExecuteNonQuery();
             }

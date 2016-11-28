@@ -72,7 +72,7 @@ namespace WindowsFormsApplication3
                 }
                 else
                 {
-                    emp.CompanyId = Int32.Parse(cmbCompanyEmployee.SelectedItem.ToString());
+                    emp.CompanyId = Int32.Parse(cmbCompanyEmployee.Text);
                 }
 
                 bool success = EmployeeController.Create(emp);
@@ -173,7 +173,7 @@ namespace WindowsFormsApplication3
                     return;
                 }
                 currentEmployee.Name = empNameTextBox.Text;
-                currentEmployee.CompanyId = Int32.Parse(cmbCompanyEmployee.SelectedItem.ToString());
+                currentEmployee.CompanyId = Int32.Parse(cmbCompanyEmployee.Text);
 
                 EmployeeController.Update(currentEmployee);
                 FillListWithAllEmployees();
@@ -226,7 +226,7 @@ namespace WindowsFormsApplication3
             {
                 currentEmployee = cmbEmployeesCustomer.SelectedItem as Employee;
 
-                int empId = Int32.Parse(cmbEmployeesCustomer.SelectedItem.ToString());
+                int empId = Int32.Parse(cmbEmployeesCustomer.Text);
                 currentEmployee = EmployeeController.FindById(empId);
 
                 if (currentEmployee == null)
@@ -332,7 +332,7 @@ namespace WindowsFormsApplication3
                     return;
                 }
                 currentCustomer.Name = txtCustName.Text;
-                currentCustomer.EmployeeId = Int32.Parse(cmbEmployeesCustomer.SelectedItem.ToString());
+                currentCustomer.EmployeeId = Int32.Parse(cmbEmployeesCustomer.Text);
                 CustomerController.Update(currentCustomer);
                 FillListWithAllCustomers();
                 lblresponse.Text = "Customer updated";
