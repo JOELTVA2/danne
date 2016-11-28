@@ -22,7 +22,6 @@ namespace WindowsFormsApplication3
 
         public Gui()
         {
-
             InitializeComponent();
             updateCmbEmployee();
             updateCmbCompanyBranch();
@@ -46,7 +45,7 @@ namespace WindowsFormsApplication3
                 tempId = tempId.Trim();
                 if (String.IsNullOrEmpty(tempId))
                 {
-                    labelUserMsg.Text = "Id box is empty";
+                    lblresponse.Text = "Id box is empty";
                     return;
                 }
 
@@ -57,12 +56,12 @@ namespace WindowsFormsApplication3
                 emp.Name = emp.Name.Trim();
                 if (emp.EmployeeId < 0)
                 {
-                    labelUserMsg.Text = "Id is less than 0";
+                    lblresponse.Text = "Id is less than 0";
                     return;
                 }
                 if (String.IsNullOrEmpty(emp.Name))
                 {
-                    labelUserMsg.Text = "You need to write a name";
+                    lblresponse.Text = "You need to write a name";
                     return;
                 }
                 if (cmbCompanyEmployee.SelectedItem == null)
@@ -79,22 +78,22 @@ namespace WindowsFormsApplication3
                 if (success)
                 {
 
-                    labelUserMsg.Text = "Employee Created";
+                    lblresponse.Text = "Employee Created";
                 }
                 else
                 {
-                    labelUserMsg.Text = "Failed to create Employee";
+                    lblresponse.Text = "Failed to create Employee";
                 }
 
             }
             catch (FormatException)
             {
 
-                labelUserMsg.Text = "Only numbers in ID";
+                lblresponse.Text = "Only numbers in ID";
             }
             catch (OverflowException)
             {
-                labelUserMsg.Text = "Too many digits in ID";
+                lblresponse.Text = "Too many digits in ID";
             }
             FillListWithAllEmployees();
         }
@@ -121,7 +120,7 @@ namespace WindowsFormsApplication3
         private void showAllEmployees_Click(object sender, EventArgs e)
         {
             FillListWithAllEmployees();
-            labelUserMsg.Text = "All Employees listed";
+            lblresponse.Text = "All Employees listed";
         }
 
         private void tabCust_Click(object sender, EventArgs e)
@@ -140,17 +139,17 @@ namespace WindowsFormsApplication3
         {
             if (currentEmployee == null)
             {
-                labelUserMsg.Text = "No employee chosen";
+                lblresponse.Text = "No employee chosen";
                 return;
             }
             bool deleted = EmployeeController.Delete(currentEmployee.EmployeeId);
             if (deleted)
             {
-                labelUserMsg.Text = "Employee deleted";
+                lblresponse.Text = "Employee deleted";
             }
             else
             {
-                labelUserMsg.Text = "Employee not deleted";
+                lblresponse.Text = "Employee not deleted";
             }
             FillListWithAllEmployees();
 
@@ -165,7 +164,7 @@ namespace WindowsFormsApplication3
 
                 if (currentEmployee == null)
                 {
-                    labelUserMsg.Text = "No employee chosen";
+                    lblresponse.Text = "No employee chosen";
                     return;
                 }
 
@@ -173,14 +172,15 @@ namespace WindowsFormsApplication3
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
                 {
-                    labelUserMsg.Text = "Name field is empty";
+                    lblresponse.Text = "Name field is empty";
                     return;
                 }
                 currentEmployee.Name = empNameTextBox.Text;
+                currentEmployee.CompanyId = Int32.Parse(cmbCompanyEmployee.SelectedItem.ToString());
 
                 EmployeeController.Update(currentEmployee);
                 FillListWithAllEmployees();
-                labelUserMsg.Text = "Employee updated";
+                lblresponse.Text = "Employee updated";
             }
             catch (Exception)
             {
@@ -202,7 +202,7 @@ namespace WindowsFormsApplication3
         private void showAllCust_Click(object sender, EventArgs e)
         {
             FillListWithAllCustomers();
-            cLabelMsg.Text = "All Customers Listed";
+            lblresponse.Text = "All Customers Listed";
 
         }
 
@@ -235,7 +235,7 @@ namespace WindowsFormsApplication3
 
                 if (currentEmployee == null)
                 {
-                    cLabelMsg.Text = "No customer selected";
+                    lblresponse.Text = "No customer selected";
                     return;
                 }
 
@@ -243,7 +243,7 @@ namespace WindowsFormsApplication3
                 tempId = tempId.Trim();
                 if (String.IsNullOrEmpty(tempId))
                 {
-                    labelUserMsg.Text = "Id box is empty";
+                    lblresponse.Text = "Id box is empty";
                     return;
                 }
 
@@ -254,34 +254,34 @@ namespace WindowsFormsApplication3
                 cust.Employee = currentEmployee;
                 if (cust.CustomerId < 0)
                 {
-                    cLabelMsg.Text = "Id is less than 0";
+                    lblresponse.Text = "Id is less than 0";
                     return;
                 }
                 if (String.IsNullOrEmpty(cust.Name))
                 {
-                    cLabelMsg.Text = "You need to write a name";
+                    lblresponse.Text = "You need to write a name";
                     return;
                 }
                 bool success = CustomerController.Create(cust);
 
                 if (success)
                 {
-                    cLabelMsg.Text = "Customer Created for " + currentEmployee.Name;
+                    lblresponse.Text = "Customer Created for " + currentEmployee.Name;
                 }
                 else
                 {
-                    cLabelMsg.Text = "Failed to create Customer";
+                    lblresponse.Text = "Failed to create Customer";
                 }
 
             }
             catch (FormatException)
             {
 
-                cLabelMsg.Text = "Only numbers in ID";
+                lblresponse.Text = "Only numbers in ID";
             }
             catch (OverflowException)
             {
-                cLabelMsg.Text = "Too many digits in ID";
+                lblresponse.Text = "Too many digits in ID";
             }
             FillListWithAllCustomers();
         }
@@ -304,17 +304,17 @@ namespace WindowsFormsApplication3
         {
             if (currentCustomer == null)
             {
-                cLabelMsg.Text = "No customer chosen";
+                lblresponse.Text = "No customer chosen";
                 return;
             }
             bool deleted = CustomerController.Delete(currentCustomer.CustomerId);
             if (deleted)
             {
-                cLabelMsg.Text = "Customer deleted";
+                lblresponse.Text = "Customer deleted";
             }
             else
             {
-                cLabelMsg.Text = "Customer not deleted";
+                lblresponse.Text = "Customer not deleted";
             }
             FillListWithAllCustomers();
             CustomerClear();
@@ -329,7 +329,7 @@ namespace WindowsFormsApplication3
 
                 if (currentCustomer == null)
                 {
-                    cLabelMsg.Text = "No customer chosen";
+                    lblresponse.Text = "No customer chosen";
                     return;
                 }
 
@@ -337,14 +337,14 @@ namespace WindowsFormsApplication3
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
                 {
-                    cLabelMsg.Text = "Name field is empty";
+                    lblresponse.Text = "Name field is empty";
                     return;
                 }
                 currentCustomer.Name = txtCustName.Text;
                 currentCustomer.EmployeeId = Int32.Parse(cmbEmployeesCustomer.SelectedItem.ToString());
                 CustomerController.Update(currentCustomer);
                 FillListWithAllCustomers();
-                cLabelMsg.Text = "Customer updated";
+                lblresponse.Text = "Customer updated";
             }
             catch (Exception ex)
             {
@@ -502,7 +502,7 @@ namespace WindowsFormsApplication3
                 tempId = tempId.Trim();
                 if (String.IsNullOrEmpty(tempId))
                 {
-                    labelUserMsg.Text = "Id box is empty";
+                    lblresponse.Text = "Id box is empty";
                     return;
                 }
 
@@ -513,12 +513,12 @@ namespace WindowsFormsApplication3
                 bransch.Name = bransch.Name.Trim();
                 if (bransch.BranschId < 0)
                 {
-                    labelUserMsg.Text = "Id is less than 0";
+                    lblresponse.Text = "Id is less than 0";
                     return;
                 }
                 if (String.IsNullOrEmpty(bransch.Name))
                 {
-                    labelUserMsg.Text = "You need to write a name";
+                    lblresponse.Text = "You need to write a name";
                     return;
                 }
 
@@ -528,22 +528,22 @@ namespace WindowsFormsApplication3
                 if (success)
                 {
 
-                    labelUserMsg.Text = "Bransch Created";
+                    lblresponse.Text = "Bransch Created";
                 }
                 else
                 {
-                    labelUserMsg.Text = "Failed to create Bransch";
+                    lblresponse.Text = "Failed to create Bransch";
                 }
 
             }
             catch (FormatException)
             {
 
-                labelUserMsg.Text = "Only numbers in ID";
+                lblresponse.Text = "Only numbers in ID";
             }
             catch (OverflowException)
             {
-                labelUserMsg.Text = "Too many digits in ID";
+                lblresponse.Text = "Too many digits in ID";
             }
             FillListWithAllEmployees();
         }
@@ -562,17 +562,17 @@ namespace WindowsFormsApplication3
         {
             if (currentBransch == null)
             {
-                labelUserMsg.Text = "No branch chosen";
+                lblresponse.Text = "No branch chosen";
                 return;
             }
             bool deleted = BranschController.DeleteBransch(currentBransch.BranschId);
             if (deleted)
             {
-                labelUserMsg.Text = "branch deleted";
+                lblresponse.Text = "branch deleted";
             }
             else
             {
-                labelUserMsg.Text = "branch not deleted";
+                lblresponse.Text = "branch not deleted";
             }
             FillListWithAllBranches();
 
@@ -587,7 +587,7 @@ namespace WindowsFormsApplication3
 
                 if (currentBransch == null)
                 {
-                    labelUserMsg.Text = "No branch chosen";
+                    lblresponse.Text = "No branch chosen";
                     return;
                 }
 
@@ -595,14 +595,14 @@ namespace WindowsFormsApplication3
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
                 {
-                    labelUserMsg.Text = "Name field is empty";
+                    lblresponse.Text = "Name field is empty";
                     return;
                 }
                 currentBransch.Name = txtBranchName.Text;
 
                 BranschController.UpdateBransch(currentBransch);
                 FillListWithAllBranches();
-                labelUserMsg.Text = "Branch updated";
+                lblresponse.Text = "Branch updated";
             }
             catch (Exception ex)
             {
@@ -621,7 +621,7 @@ namespace WindowsFormsApplication3
                 tempId = tempId.Trim();
                 if (String.IsNullOrEmpty(tempId))
                 {
-                    labelUserMsg.Text = "Id box is empty";
+                    lblresponse.Text = "Id box is empty";
                     return;
                 }
 
@@ -632,12 +632,12 @@ namespace WindowsFormsApplication3
                 rc.BranschId = Int32.Parse(cmbCompanyBranch.SelectedItem.ToString());
                 if (rc.BranschId < 0)
                 {
-                    labelUserMsg.Text = "Id is less than 0";
+                    lblresponse.Text = "Id is less than 0";
                     return;
                 }
                 if (String.IsNullOrEmpty(rc.Name))
                 {
-                    labelUserMsg.Text = "You need to write a name";
+                    lblresponse.Text = "You need to write a name";
                     return;
                 }
 
@@ -646,22 +646,22 @@ namespace WindowsFormsApplication3
                 if (success)
                 {
 
-                    labelUserMsg.Text = "Company Created";
+                    lblresponse.Text = "Company Created";
                 }
                 else
                 {
-                    labelUserMsg.Text = "Failed to create company";
+                    lblresponse.Text = "Failed to create company";
                 }
 
             }
             catch (FormatException)
             {
 
-                labelUserMsg.Text = "Only numbers in ID";
+                lblresponse.Text = "Only numbers in ID";
             }
             catch (OverflowException)
             {
-                labelUserMsg.Text = "Too many digits in ID";
+                lblresponse.Text = "Too many digits in ID";
             }
             FillListWithAllCompanies();
         }
@@ -674,7 +674,7 @@ namespace WindowsFormsApplication3
 
                 if (currentCompany == null)
                 {
-                    labelUserMsg.Text = "No company chosen";
+                    lblresponse.Text = "No company chosen";
                     return;
                 }
 
@@ -682,14 +682,14 @@ namespace WindowsFormsApplication3
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
                 {
-                    labelUserMsg.Text = "Name field is empty";
+                    lblresponse.Text = "Name field is empty";
                     return;
                 }
                 currentCompany.Name = txtCompanyName.Text;
 
                 CompanyController.Update(currentCompany);
                 FillListWithAllCompanies();
-                labelUserMsg.Text = "Company updated";
+                lblresponse.Text = "Company updated";
             }
             catch (Exception ex)
             {
@@ -702,17 +702,17 @@ namespace WindowsFormsApplication3
         {
             if (currentCompany == null)
             {
-                labelUserMsg.Text = "No company chosen";
+                lblresponse.Text = "No company chosen";
                 return;
             }
             bool deleted = CompanyController.DeleteRegistered_Company(currentCompany.RegComp_Id);
             if (deleted)
             {
-                labelUserMsg.Text = "Company deleted";
+                lblresponse.Text = "Company deleted";
             }
             else
             {
-                labelUserMsg.Text = "Company not deleted";
+                lblresponse.Text = "Company not deleted";
             }
             FillListWithAllCompanies();
             CompanyClear();
