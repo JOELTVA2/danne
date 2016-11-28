@@ -26,6 +26,7 @@ namespace WindowsFormsApplication3
             InitializeComponent();
             updateCmbEmployee();
             updateCmbCompanyBranch();
+            updateCmbEmployeeCompany();
             FillListWithAllCompanies();
             FillListWithAllCustomers();
             FillListWithAllEmployees();
@@ -128,8 +129,10 @@ namespace WindowsFormsApplication3
            // IEnumerable<Employee> employees = EmployeeController.ReadAll();
             cmbEmployeesCustomer.Items.Clear();
             cmbCompanyBranch.Items.Clear();
+            cmbCompanyEmployee.Items.Clear();
             updateCmbEmployee();
             updateCmbCompanyBranch();
+            updateCmbEmployeeCompany();
         }
 
 
@@ -190,17 +193,7 @@ namespace WindowsFormsApplication3
         {
 
         }
-        private void FillListWithCustomerFromE()
-        {
-            IEnumerable<Customer> customers = CustomerController.ReadAllCustomersForEmployee(currentEmployee);
-            empCustListBox.Items.Clear();
-            foreach (Customer cust in customers)
-            {
-                Debug.WriteLine(cust.CustomerId + " " + cust.Name);
-                empCustListBox.Items.Add(cust);
-            }
 
-        }
         private void FillListWithAllCustomers()
         {
             dgvCustomers.DataSource = CustomerController.ReadAll();
@@ -306,17 +299,6 @@ namespace WindowsFormsApplication3
 
         }
 
-        private void showCustForE_Click(object sender, EventArgs e)
-        {
-            if (currentEmployee == null)
-            {
-                labelUserMsg.Text = "No employee chosen";
-                return;
-            }
-            FillListWithCustomerFromE();
-            labelUserMsg.Text = "All customers listed for " + currentEmployee;
-
-        }
 
         private void deleteCustFromE_Click(object sender, EventArgs e)
         {
@@ -335,6 +317,7 @@ namespace WindowsFormsApplication3
                 cLabelMsg.Text = "Customer not deleted";
             }
             FillListWithAllCustomers();
+            CustomerClear();
 
         }
 
@@ -358,7 +341,7 @@ namespace WindowsFormsApplication3
                     return;
                 }
                 currentCustomer.Name = txtCustName.Text;
-
+                currentCustomer.EmployeeId = Int32.Parse(cmbEmployeesCustomer.SelectedItem.ToString());
                 CustomerController.Update(currentCustomer);
                 FillListWithAllCustomers();
                 cLabelMsg.Text = "Customer updated";
@@ -383,6 +366,9 @@ namespace WindowsFormsApplication3
                 currentEmployee = EmployeeController.FindById(empId);
                 empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
                 empNameTextBox.Text = currentEmployee.Name;
+                dgvEmployeesCustomers.DataSource = CustomerController.ReadAllCustomersForEmployee(currentEmployee);
+                
+
             }
             catch (Exception ex)
             {
@@ -417,6 +403,7 @@ namespace WindowsFormsApplication3
                 currentBransch = BranschController.FindById(branchId);
                 txtBranchId.Text = currentBransch.BranschId.ToString();
                 txtBranchName.Text = currentBransch.Name;
+                dgvBranchCompanies.DataSource = BranschController.ReadAllCompaniesForABransch(currentBransch);
             }
             catch (Exception ex)
             {
@@ -424,23 +411,23 @@ namespace WindowsFormsApplication3
             }
         }
 
-
         private void dgvCompanies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            //fixa till när det kommer
             try
             {
-                int empId = Int32.Parse(dgvEmployees.CurrentRow.Cells[0].Value.ToString());
-                currentEmployee = EmployeeController.FindById(empId);
-                empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
-                empNameTextBox.Text = currentEmployee.Name;
+                CompanyClear();
+                int companyId = Int32.Parse(dgvCompanies.CurrentRow.Cells[0].Value.ToString());
+                currentCompany = CompanyController.FindById(companyId);
+                txtCompanyId.Text = currentCompany.RegComp_Id.ToString();
+                txtCompanyName.Text = currentCompany.Name;
+                cmbCompanyBranch.SelectedText = currentCompany.BranschId.ToString();
+                dgvCompaniesEmployees.DataSource = CompanyController.ReadAllEmployeesForACompany(currentCompany);
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
 
@@ -482,12 +469,30 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void updateCmbEmployeeCompany()
+        {
+            DataTable companies = CompanyController.ReadAll();
+
+            for (int i = 0; i < companies.Rows.Count; i++)
+            {
+                cmbCompanyEmployee.Items.Add(companies.Rows[i]["RegComp_Id"]);
+            }
+        }
+
         private void CustomerClear()
         {
             txtCustId.Clear();
             txtCustName.Clear();
             cmbEmployeesCustomer.Text = "";
         }
+
+        private void CompanyClear()
+        {
+            txtCompanyId.Clear();
+            txtCompanyName.Clear();
+            cmbCompanyBranch.Text = "";
+        }
+
 
         private void CreateBranchButton_Click(object sender, EventArgs e)
         {
@@ -518,6 +523,7 @@ namespace WindowsFormsApplication3
                 }
 
                 bool success = BranschController.CreateBransch(bransch);
+                FillListWithAllBranches();
 
                 if (success)
                 {
@@ -600,12 +606,124 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
 
         }
+
+        private void btnCompanyCreate_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                String tempId = txtCompanyId.Text;
+                tempId = tempId.Trim();
+                if (String.IsNullOrEmpty(tempId))
+                {
+                    labelUserMsg.Text = "Id box is empty";
+                    return;
+                }
+
+                Registered_Company rc = new Registered_Company();
+                rc.RegComp_Id = Int32.Parse(tempId);
+
+                rc.Name = txtCompanyName.Text;
+                rc.BranschId = Int32.Parse(cmbCompanyBranch.SelectedItem.ToString());
+                if (rc.BranschId < 0)
+                {
+                    labelUserMsg.Text = "Id is less than 0";
+                    return;
+                }
+                if (String.IsNullOrEmpty(rc.Name))
+                {
+                    labelUserMsg.Text = "You need to write a name";
+                    return;
+                }
+
+                bool success = CompanyController.CreateRegistered_Company(rc);
+
+                if (success)
+                {
+
+                    labelUserMsg.Text = "Company Created";
+                }
+                else
+                {
+                    labelUserMsg.Text = "Failed to create company";
+                }
+
+            }
+            catch (FormatException)
+            {
+
+                labelUserMsg.Text = "Only numbers in ID";
+            }
+            catch (OverflowException)
+            {
+                labelUserMsg.Text = "Too many digits in ID";
+            }
+            FillListWithAllCompanies();
+        }
+
+        private void btnCompanyUpdate_Click(object sender, EventArgs e)
+        {
+            string tempName;
+            try
+            {
+
+                if (currentCompany == null)
+                {
+                    labelUserMsg.Text = "No company chosen";
+                    return;
+                }
+
+                tempName = txtCompanyName.Text;
+                tempName = tempName.Trim();
+                if (String.IsNullOrEmpty(tempName))
+                {
+                    labelUserMsg.Text = "Name field is empty";
+                    return;
+                }
+                currentCompany.Name = txtCompanyName.Text;
+
+                CompanyController.Update(currentCompany);
+                FillListWithAllCompanies();
+                labelUserMsg.Text = "Company updated";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void CompanyDelete_Click(object sender, EventArgs e)
+        {
+            if (currentCompany == null)
+            {
+                labelUserMsg.Text = "No company chosen";
+                return;
+            }
+            bool deleted = CompanyController.DeleteRegistered_Company(currentCompany.RegComp_Id);
+            if (deleted)
+            {
+                labelUserMsg.Text = "Company deleted";
+            }
+            else
+            {
+                labelUserMsg.Text = "Company not deleted";
+            }
+            FillListWithAllCompanies();
+            CompanyClear();
+
+        }
+
+        private void btnCompanyShowAll_Click(object sender, EventArgs e)
+        {
+            FillListWithAllCompanies();
+        }
     }
+ }
     
-}
+

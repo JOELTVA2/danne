@@ -26,7 +26,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_Company_Employees", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@RegComp_Id", rc.RegComp_Id);
+                cmd.Parameters.AddWithValue("@CompanyId", rc.RegComp_Id);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(rcs);
 
@@ -161,7 +161,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand("usp_Delete_A_RegCompany", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@RegComp_Id", regComp_Id);
+                SqlParameter idParam = new SqlParameter("@RegCom_Id", regComp_Id);
                 cmd.Parameters.Add(idParam);
                 result = cmd.ExecuteNonQuery();
             }

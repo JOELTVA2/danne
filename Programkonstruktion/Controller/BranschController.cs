@@ -16,6 +16,10 @@ namespace Controller
         {
             return BranschAccess.ReadAll();
         }
+        public static DataTable ReadAllCompaniesForABransch(Bransch b)
+        {
+            return BranschAccess.ReadAllCompaniesForABransch(b);
+        }
         public static Bransch FindById(int branschId)
         {
             return BranschAccess.FindById(branschId);

@@ -214,7 +214,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;btnCompanyCreate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <metadata name="CreateBranchButton.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -247,7 +247,61 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;CreateBranchButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 25</value>
+  </data>
+  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 13</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Employees customers:</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPage7</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvEmployeesCustomers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 59</value>
+  </data>
+  <data name="dgvEmployeesCustomers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 261</value>
+  </data>
+  <data name="dgvEmployeesCustomers.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;dgvEmployeesCustomers.Name" xml:space="preserve">
+    <value>dgvEmployeesCustomers</value>
+  </data>
+  <data name="&gt;&gt;dgvEmployeesCustomers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvEmployeesCustomers.Parent" xml:space="preserve">
+    <value>tabPage7</value>
+  </data>
+  <data name="&gt;&gt;dgvEmployeesCustomers.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="dgvEmployees.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 170</value>
@@ -268,7 +322,7 @@
     <value>tabPage7</value>
   </data>
   <data name="&gt;&gt;dgvEmployees.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cmbCompanyEmployee.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 97</value>
@@ -289,7 +343,7 @@
     <value>tabPage7</value>
   </data>
   <data name="&gt;&gt;cmbCompanyEmployee.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -322,7 +376,7 @@
     <value>tabPage7</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +406,7 @@
     <value>tabPage7</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -382,57 +436,6 @@
     <value>tabPage7</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="showCustForE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>421, 109</value>
-  </data>
-  <data name="showCustForE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="showCustForE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 41</value>
-  </data>
-  <data name="showCustForE.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="showCustForE.Text" xml:space="preserve">
-    <value>Show selected employee customers</value>
-  </data>
-  <data name="&gt;&gt;showCustForE.Name" xml:space="preserve">
-    <value>showCustForE</value>
-  </data>
-  <data name="&gt;&gt;showCustForE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showCustForE.Parent" xml:space="preserve">
-    <value>tabPage7</value>
-  </data>
-  <data name="&gt;&gt;showCustForE.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="empCustListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>421, 170</value>
-  </data>
-  <data name="empCustListBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="empCustListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 147</value>
-  </data>
-  <data name="empCustListBox.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;empCustListBox.Name" xml:space="preserve">
-    <value>empCustListBox</value>
-  </data>
-  <data name="&gt;&gt;empCustListBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;empCustListBox.Parent" xml:space="preserve">
-    <value>tabPage7</value>
-  </data>
-  <data name="&gt;&gt;empCustListBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="labelUserMsg.AutoSize" type="System.Boolean, mscorlib">
@@ -598,7 +601,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>736, 496</value>
+    <value>749, 496</value>
   </data>
   <data name="tabPage7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -925,7 +928,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>736, 496</value>
+    <value>749, 496</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -943,6 +946,60 @@
     <value>tabCust</value>
   </data>
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 21</value>
+  </data>
+  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 13</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Companies Employees:</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvCompaniesEmployees.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 53</value>
+  </data>
+  <data name="dgvCompaniesEmployees.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 250</value>
+  </data>
+  <data name="dgvCompaniesEmployees.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;dgvCompaniesEmployees.Name" xml:space="preserve">
+    <value>dgvCompaniesEmployees</value>
+  </data>
+  <data name="&gt;&gt;dgvCompaniesEmployees.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvCompaniesEmployees.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;dgvCompaniesEmployees.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="dgvCompanies.Location" type="System.Drawing.Point, System.Drawing">
@@ -964,7 +1021,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;dgvCompanies.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cmbCompanyBranch.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 19</value>
@@ -985,7 +1042,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;cmbCompanyBranch.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1018,7 +1075,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1051,7 +1108,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1084,7 +1141,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnCompanyUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1114,7 +1171,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;btnCompanyUpdate.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtCompanyName.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 86</value>
@@ -1138,7 +1195,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;txtCompanyName.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="txtCompanyId.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 53</value>
@@ -1162,7 +1219,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;txtCompanyId.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="CompanyDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1192,7 +1249,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;CompanyDelete.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="btnCompanyShowAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1222,7 +1279,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;btnCompanyShowAll.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1231,7 +1288,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>736, 496</value>
+    <value>792, 496</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1250,6 +1307,60 @@
   </data>
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>388, 20</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Companies in branch:</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvBranchCompanies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 51</value>
+  </data>
+  <data name="dgvBranchCompanies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 258</value>
+  </data>
+  <data name="dgvBranchCompanies.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;dgvBranchCompanies.Name" xml:space="preserve">
+    <value>dgvBranchCompanies</value>
+  </data>
+  <data name="&gt;&gt;dgvBranchCompanies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvBranchCompanies.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;dgvBranchCompanies.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="dgvBranches.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 159</value>
@@ -1270,7 +1381,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;dgvBranches.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1303,7 +1414,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1336,7 +1447,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="UpdateBranchButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1366,7 +1477,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;UpdateBranchButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtBranchName.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 51</value>
@@ -1390,7 +1501,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;txtBranchName.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="txtBranchId.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 17</value>
@@ -1414,7 +1525,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;txtBranchId.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="DeleteBranchButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1444,7 +1555,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;DeleteBranchButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="ShowAllBranchButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1474,7 +1585,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;ShowAllBranchButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1483,7 +1594,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>736, 496</value>
+    <value>792, 496</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1510,7 +1621,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabCust.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 522</value>
+    <value>800, 522</value>
   </data>
   <data name="tabCust.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1534,7 +1645,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>761, 543</value>
+    <value>813, 543</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

@@ -44,8 +44,6 @@ namespace WindowsFormsApplication3
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.showCustForE = new System.Windows.Forms.Button();
-            this.empCustListBox = new System.Windows.Forms.ListBox();
             this.labelUserMsg = new System.Windows.Forms.Label();
             this.updateEmp = new System.Windows.Forms.Button();
             this.empNameTextBox = new System.Windows.Forms.TextBox();
@@ -84,6 +82,12 @@ namespace WindowsFormsApplication3
             this.txtBranchId = new System.Windows.Forms.TextBox();
             this.DeleteBranchButton = new System.Windows.Forms.Button();
             this.ShowAllBranchButton = new System.Windows.Forms.Button();
+            this.dgvEmployeesCustomers = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dgvCompaniesEmployees = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dgvBranchCompanies = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
             btnCompanyCreate = new System.Windows.Forms.Button();
@@ -97,6 +101,9 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompaniesEmployees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBranchCompanies)).BeginInit();
             this.SuspendLayout();
             // 
             // createEmpButton
@@ -118,6 +125,7 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(btnCompanyCreate, "btnCompanyCreate");
             btnCompanyCreate.Name = "btnCompanyCreate";
             btnCompanyCreate.UseVisualStyleBackColor = true;
+            btnCompanyCreate.Click += new System.EventHandler(this.btnCompanyCreate_Click);
             // 
             // CreateBranchButton
             // 
@@ -140,13 +148,13 @@ namespace WindowsFormsApplication3
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.label12);
+            this.tabPage7.Controls.Add(this.dgvEmployeesCustomers);
             this.tabPage7.Controls.Add(this.dgvEmployees);
             this.tabPage7.Controls.Add(this.cmbCompanyEmployee);
             this.tabPage7.Controls.Add(this.label6);
             this.tabPage7.Controls.Add(this.label2);
             this.tabPage7.Controls.Add(this.label1);
-            this.tabPage7.Controls.Add(this.showCustForE);
-            this.tabPage7.Controls.Add(this.empCustListBox);
             this.tabPage7.Controls.Add(this.labelUserMsg);
             this.tabPage7.Controls.Add(this.updateEmp);
             this.tabPage7.Controls.Add(this.empNameTextBox);
@@ -164,6 +172,7 @@ namespace WindowsFormsApplication3
             this.dgvEmployees.AllowUserToDeleteRows = false;
             this.dgvEmployees.AllowUserToResizeColumns = false;
             this.dgvEmployees.AllowUserToResizeRows = false;
+            this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dgvEmployees, "dgvEmployees");
             this.dgvEmployees.Name = "dgvEmployees";
@@ -192,20 +201,6 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // showCustForE
-            // 
-            resources.ApplyResources(this.showCustForE, "showCustForE");
-            this.showCustForE.Name = "showCustForE";
-            this.showCustForE.UseVisualStyleBackColor = true;
-            this.showCustForE.Click += new System.EventHandler(this.showCustForE_Click);
-            // 
-            // empCustListBox
-            // 
-            this.empCustListBox.FormattingEnabled = true;
-            resources.ApplyResources(this.empCustListBox, "empCustListBox");
-            this.empCustListBox.Name = "empCustListBox";
-            this.empCustListBox.SelectedIndexChanged += new System.EventHandler(this.empCustListBox_SelectedIndexChanged);
             // 
             // labelUserMsg
             // 
@@ -274,6 +269,7 @@ namespace WindowsFormsApplication3
             this.dgvCustomers.AllowUserToDeleteRows = false;
             this.dgvCustomers.AllowUserToResizeColumns = false;
             this.dgvCustomers.AllowUserToResizeRows = false;
+            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dgvCustomers, "dgvCustomers");
@@ -337,6 +333,8 @@ namespace WindowsFormsApplication3
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.dgvCompaniesEmployees);
             this.tabPage2.Controls.Add(this.dgvCompanies);
             this.tabPage2.Controls.Add(this.cmbCompanyBranch);
             this.tabPage2.Controls.Add(this.label7);
@@ -354,9 +352,15 @@ namespace WindowsFormsApplication3
             // 
             // dgvCompanies
             // 
+            this.dgvCompanies.AllowUserToAddRows = false;
+            this.dgvCompanies.AllowUserToDeleteRows = false;
+            this.dgvCompanies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dgvCompanies, "dgvCompanies");
             this.dgvCompanies.Name = "dgvCompanies";
+            this.dgvCompanies.ReadOnly = true;
+            this.dgvCompanies.RowHeadersVisible = false;
+            this.dgvCompanies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompanies_CellClick);
             // 
             // cmbCompanyBranch
             // 
@@ -384,6 +388,7 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.btnCompanyUpdate, "btnCompanyUpdate");
             this.btnCompanyUpdate.Name = "btnCompanyUpdate";
             this.btnCompanyUpdate.UseVisualStyleBackColor = true;
+            this.btnCompanyUpdate.Click += new System.EventHandler(this.btnCompanyUpdate_Click);
             // 
             // txtCompanyName
             // 
@@ -400,15 +405,19 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.CompanyDelete, "CompanyDelete");
             this.CompanyDelete.Name = "CompanyDelete";
             this.CompanyDelete.UseVisualStyleBackColor = true;
+            this.CompanyDelete.Click += new System.EventHandler(this.CompanyDelete_Click);
             // 
             // btnCompanyShowAll
             // 
             resources.ApplyResources(this.btnCompanyShowAll, "btnCompanyShowAll");
             this.btnCompanyShowAll.Name = "btnCompanyShowAll";
             this.btnCompanyShowAll.UseVisualStyleBackColor = true;
+            this.btnCompanyShowAll.Click += new System.EventHandler(this.btnCompanyShowAll_Click);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.dgvBranchCompanies);
             this.tabPage3.Controls.Add(this.dgvBranches);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label11);
@@ -477,6 +486,58 @@ namespace WindowsFormsApplication3
             this.ShowAllBranchButton.UseVisualStyleBackColor = true;
             this.ShowAllBranchButton.Click += new System.EventHandler(this.ShowAllBranchButton_Click);
             // 
+            // dgvEmployeesCustomers
+            // 
+            this.dgvEmployeesCustomers.AllowUserToAddRows = false;
+            this.dgvEmployeesCustomers.AllowUserToDeleteRows = false;
+            this.dgvEmployeesCustomers.AllowUserToResizeColumns = false;
+            this.dgvEmployeesCustomers.AllowUserToResizeRows = false;
+            this.dgvEmployeesCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEmployeesCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvEmployeesCustomers, "dgvEmployeesCustomers");
+            this.dgvEmployeesCustomers.Name = "dgvEmployeesCustomers";
+            this.dgvEmployeesCustomers.ReadOnly = true;
+            this.dgvEmployeesCustomers.RowHeadersVisible = false;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // dgvCompaniesEmployees
+            // 
+            this.dgvCompaniesEmployees.AllowUserToAddRows = false;
+            this.dgvCompaniesEmployees.AllowUserToDeleteRows = false;
+            this.dgvCompaniesEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCompaniesEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvCompaniesEmployees, "dgvCompaniesEmployees");
+            this.dgvCompaniesEmployees.Name = "dgvCompaniesEmployees";
+            this.dgvCompaniesEmployees.ReadOnly = true;
+            this.dgvCompaniesEmployees.RowHeadersVisible = false;
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // dgvBranchCompanies
+            // 
+            this.dgvBranchCompanies.AllowUserToAddRows = false;
+            this.dgvBranchCompanies.AllowUserToDeleteRows = false;
+            this.dgvBranchCompanies.AllowUserToResizeColumns = false;
+            this.dgvBranchCompanies.AllowUserToResizeRows = false;
+            this.dgvBranchCompanies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBranchCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvBranchCompanies, "dgvBranchCompanies");
+            this.dgvBranchCompanies.Name = "dgvBranchCompanies";
+            this.dgvBranchCompanies.ReadOnly = true;
+            this.dgvBranchCompanies.RowHeadersVisible = false;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
             // Gui
             // 
             resources.ApplyResources(this, "$this");
@@ -497,6 +558,9 @@ namespace WindowsFormsApplication3
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompaniesEmployees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBranchCompanies)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,8 +582,6 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Button deleteCustFromE;
         private System.Windows.Forms.Button showAllCust;
         private System.Windows.Forms.Label cLabelMsg;
-        private System.Windows.Forms.ListBox empCustListBox;
-        private System.Windows.Forms.Button showCustForE;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -550,5 +612,11 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Button ShowAllBranchButton;
         private System.Windows.Forms.DataGridView dgvCompanies;
         private System.Windows.Forms.DataGridView dgvBranches;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dgvEmployeesCustomers;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dgvCompaniesEmployees;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView dgvBranchCompanies;
     }
 }

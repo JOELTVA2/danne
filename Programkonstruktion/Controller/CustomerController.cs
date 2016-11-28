@@ -31,7 +31,7 @@ namespace Controller
         {
             return CustomerAccess.Update(cust);
         }
-        public static IEnumerable<Customer> ReadAllCustomersForEmployee(Employee emp)
+        public static DataTable ReadAllCustomersForEmployee(Employee emp)
         {
             return CustomerAccess.ReadAllCustomersForEmployee(emp);
         }
