@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using System;
+using ErrorHandler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace WindowsFormsApplication3
 {
@@ -86,14 +88,9 @@ namespace WindowsFormsApplication3
                 }
 
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-
-                lblresponse.Text = "Only numbers in ID";
-            }
-            catch (OverflowException)
-            {
-                lblresponse.Text = "Too many digits in ID";
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
             FillListWithAllEmployees();
         }
@@ -125,7 +122,7 @@ namespace WindowsFormsApplication3
 
         private void tabCust_Click(object sender, EventArgs e)
         {
-           // IEnumerable<Employee> employees = EmployeeController.ReadAll();
+    
             cmbEmployeesCustomer.Items.Clear();
             cmbCompanyBranch.Items.Clear();
             cmbCompanyEmployee.Items.Clear();
@@ -182,10 +179,9 @@ namespace WindowsFormsApplication3
                 FillListWithAllEmployees();
                 lblresponse.Text = "Employee updated";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
         }
 
@@ -274,14 +270,9 @@ namespace WindowsFormsApplication3
                 }
 
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-
-                lblresponse.Text = "Only numbers in ID";
-            }
-            catch (OverflowException)
-            {
-                lblresponse.Text = "Too many digits in ID";
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
             FillListWithAllCustomers();
         }
@@ -348,8 +339,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
         }
 
@@ -372,9 +362,9 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
-       
+
         }
 
         private void dgvCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -390,7 +380,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
 
         }
@@ -407,7 +397,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
         }
 
@@ -426,7 +416,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
         }
 
@@ -442,7 +432,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
 
         }
@@ -536,14 +526,9 @@ namespace WindowsFormsApplication3
                 }
 
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-
-                lblresponse.Text = "Only numbers in ID";
-            }
-            catch (OverflowException)
-            {
-                lblresponse.Text = "Too many digits in ID";
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
             FillListWithAllEmployees();
         }
@@ -606,7 +591,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
 
 
@@ -654,14 +639,9 @@ namespace WindowsFormsApplication3
                 }
 
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-
-                lblresponse.Text = "Only numbers in ID";
-            }
-            catch (OverflowException)
-            {
-                lblresponse.Text = "Too many digits in ID";
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
             FillListWithAllCompanies();
         }
@@ -693,7 +673,7 @@ namespace WindowsFormsApplication3
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblresponse.Text = ErrorHandlern.HandleExceptions(ex);
             }
 
         }

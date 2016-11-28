@@ -87,6 +87,10 @@
       <Project>{d7876d84-3504-4584-9077-48cb767b0c83}</Project>
       <Name>Controller</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ErrorHandler\ErrorHandler.csproj">
+      <Project>{8d92ada7-b10e-48a9-9b1a-82c26bfc2cd7}</Project>
+      <Name>ErrorHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{b911012d-7301-4de3-bb1b-39b09b7f343e}</Project>
       <Name>Model</Name>
