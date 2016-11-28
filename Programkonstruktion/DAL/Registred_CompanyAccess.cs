@@ -9,90 +9,29 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class Registred_CompanyAccess
+    public class Registred_CompanyAccess
     {
         public static DataTable ReadAllEmployeesForACompany(Registered_Company rc)
         {
 
-            DataTable bransches = new DataTable();
+            DataTable rcs = new DataTable();
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
-                return bransches;
-            }
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Bransches", conn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(bransches);
-
+                return rcs;
             }
 
-            List<Employee> employees = new List<Employee>();
-            SqlConnection conn = DBUtil.CreateConnection();
-            if (conn == null)
-            {
-                return employees;
-            }
             try
             {
 
                 SqlCommand cmd = new SqlCommand("usp_Info_About_Company_Employees", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@RegComp_Id", rc.RegComp_Id);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Employee emp = new Employee();
-                    emp.EmployeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
-                    emp.Name = reader["Name"].ToString();
-
-                    employees.Add(emp);
-                }
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(rcs);
 
             }
-            catch (Exception e)
-            {
-                throw e;
 
-            }
-            finally
-            {
-                DBUtil.CloseConnection(conn);
-
-
-            }
-            return employees;
-
-        }
-
-        public static IEnumerable<Registered_Company> ReadAll()
-        {
-
-            List<Registered_Company> rcs = new List<Registered_Company>();
-            SqlConnection conn = DBUtil.CreateConnection();
-            if (conn == null)
-            {
-                return rcs;
-            }
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand("usp_Info_About_All_RegCompany", conn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Registered_Company rc = new Registered_Company();
-                    rc.RegComp_Id = reader.GetInt32(reader.GetOrdinal("RegComp_Id"));
-                    rc.Name = reader["Name"].ToString();
-
-                    rcs.Add(rc);
-                }
-
-            }
             catch (Exception e)
             {
                 throw e;
@@ -108,11 +47,43 @@ namespace DAL
 
         }
 
+        public static DataTable ReadAll()
+        {
 
-        public static Customer FindById(int id)
+            DataTable rcs = new DataTable();
+            SqlConnection conn = DBUtil.CreateConnection();
+            if (conn == null)
+            {
+                return rcs;
+            }
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_Info_About_All_RegCompanies", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(rcs);
+
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+            finally
+            {
+                DBUtil.CloseConnection(conn);
+
+
+            }
+            return rcs;
+        }
+
+        public static Registered_Company FindById(int id)
 
         {
-            Customer customer = null;
+            Registered_Company rc = null;
             SqlConnection conn = DBUtil.CreateConnection();
             if (conn == null)
             {
@@ -120,18 +91,19 @@ namespace DAL
             }
             try
             {
-                SqlCommand cmd = new SqlCommand("usp_Find_A_Customer_By_ID", conn);
+                SqlCommand cmd = new SqlCommand("usp_Find_A_RegComp_By_ID", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@Id", id);
+                SqlParameter idParam = new SqlParameter("@RegComp_Id", id);
                 cmd.Parameters.Add(idParam);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    customer = new Customer();
-                    customer.CustomerId = reader.GetInt32(reader.GetOrdinal("Id"));
-                    customer.Name = reader["Name"].ToString();
+                    rc = new Registered_Company();
+                    rc.RegComp_Id = reader.GetInt32(reader.GetOrdinal("RegComp_Id"));
+                    rc.Name = reader["Name"].ToString();
+                    rc.BranschId = Int32.Parse(reader["BranschId"].ToString());
                 }
             }
             catch (Exception e)
@@ -142,7 +114,7 @@ namespace DAL
             {
                 DBUtil.CloseConnection(conn);
             }
-            return customer;
+            return rc;
         }
 
         public static bool CreateRegistered_Company(Registered_Company rc)
@@ -176,6 +148,7 @@ namespace DAL
             }
             return true;
         }
+
         public static bool DeleteRegistered_Company(int regComp_Id)
         {
             int result = 0;
@@ -219,12 +192,9 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("usp_Update_A_RegisteredCompany", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter idParam = new SqlParameter("@RegComp_Id", rc.RegComp_Id);
-                SqlParameter nameParam = new SqlParameter("@Name", rc.Name);
-                SqlParameter branschParam = new SqlParameter("@BranschId", rc.BranschId);
-                cmd.Parameters.Add(idParam);
-                cmd.Parameters.Add(nameParam);
-                cmd.Parameters.Add(branschParam);
+                cmd.Parameters.Add("@RegComp_Id", SqlDbType.Int).Value = rc.RegComp_Id;
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = rc.Name;
+                cmd.Parameters.Add("@BranschId", SqlDbType.Int).Value = rc.BranschId;
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception e)

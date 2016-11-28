@@ -17,7 +17,7 @@ namespace DAL
         {
             try
             {
-                SqlConnection myConnection = new SqlConnection(ConnectionString.connString);
+                SqlConnection myConnection = new SqlConnection(ConnectionString.connStringLaptop);
 
                 myConnection.Open();
                 return myConnection;

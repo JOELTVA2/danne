@@ -154,6 +154,7 @@ namespace DAL
             }
             return true;
         }
+
         public static bool Update(Employee emp)
         {
             int result = 0;

@@ -25,6 +25,11 @@ namespace WindowsFormsApplication3
 
             InitializeComponent();
             updateCmbEmployee();
+            updateCmbCompanyBranch();
+            FillListWithAllCompanies();
+            FillListWithAllCustomers();
+            FillListWithAllEmployees();
+            FillListWithAllBranches();
         }
 
         private void empIdTextBox_TextChanged(object sender, EventArgs e)
@@ -107,6 +112,11 @@ namespace WindowsFormsApplication3
             dgvEmployees.DataSource = EmployeeController.ReadAll();
         }
 
+        private void FillListWithAllCompanies()
+        {
+            dgvCompanies.DataSource = CompanyController.ReadAll();
+        }
+
         private void showAllEmployees_Click(object sender, EventArgs e)
         {
             FillListWithAllEmployees();
@@ -117,10 +127,11 @@ namespace WindowsFormsApplication3
         {
            // IEnumerable<Employee> employees = EmployeeController.ReadAll();
             cmbEmployeesCustomer.Items.Clear();
+            cmbCompanyBranch.Items.Clear();
             updateCmbEmployee();
-
-
+            updateCmbCompanyBranch();
         }
+
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
@@ -231,7 +242,7 @@ namespace WindowsFormsApplication3
 
                 if (currentEmployee == null)
                 {
-                    cLabelMsg.Text = "No employee selected";
+                    cLabelMsg.Text = "No customer selected";
                     return;
                 }
 
@@ -460,6 +471,17 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void updateCmbCompanyBranch()
+        {
+            DataTable branches = BranschController.ReadAll();
+
+            for (int i = 0; i < branches.Rows.Count; i++)
+            {
+                cmbCompanyBranch.Items.Add(branches.Rows[i]["BranschId"]);
+            }
+
+        }
+
         private void CustomerClear()
         {
             txtCustId.Clear();
@@ -520,33 +542,33 @@ namespace WindowsFormsApplication3
             FillListWithAllEmployees();
         }
 
-        private void FillAllBranches()
+        private void FillListWithAllBranches()
         {
             dgvBranches.DataSource = BranschController.ReadAll();
         }
 
         private void ShowAllBranchButton_Click(object sender, EventArgs e)
         {
-            FillAllBranches();
+            FillListWithAllBranches();
         }
 
         private void DeleteBranchButton_Click(object sender, EventArgs e)
         {
             if (currentBransch == null)
             {
-                labelUserMsg.Text = "No employee chosen";
+                labelUserMsg.Text = "No branch chosen";
                 return;
             }
             bool deleted = BranschController.DeleteBransch(currentBransch.BranschId);
             if (deleted)
             {
-                labelUserMsg.Text = "Employee deleted";
+                labelUserMsg.Text = "branch deleted";
             }
             else
             {
-                labelUserMsg.Text = "Employee not deleted";
+                labelUserMsg.Text = "branch not deleted";
             }
-            FillAllBranches();
+            FillListWithAllBranches();
 
 
         }
@@ -559,7 +581,7 @@ namespace WindowsFormsApplication3
 
                 if (currentBransch == null)
                 {
-                    labelUserMsg.Text = "No employee chosen";
+                    labelUserMsg.Text = "No branch chosen";
                     return;
                 }
 
@@ -573,8 +595,8 @@ namespace WindowsFormsApplication3
                 currentBransch.Name = txtBranchName.Text;
 
                 BranschController.UpdateBransch(currentBransch);
-                FillAllBranches();
-                labelUserMsg.Text = "Bransch updated";
+                FillListWithAllBranches();
+                labelUserMsg.Text = "Branch updated";
             }
             catch (Exception ex)
             {

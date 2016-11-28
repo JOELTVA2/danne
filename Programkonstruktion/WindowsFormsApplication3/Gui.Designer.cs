@@ -66,7 +66,7 @@ namespace WindowsFormsApplication3
             this.showAllCust = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvCompanies = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCompanyBranch = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -338,7 +338,7 @@ namespace WindowsFormsApplication3
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dgvCompanies);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cmbCompanyBranch);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label9);
@@ -358,11 +358,11 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.dgvCompanies, "dgvCompanies");
             this.dgvCompanies.Name = "dgvCompanies";
             // 
-            // comboBox1
+            // cmbCompanyBranch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.cmbCompanyBranch.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbCompanyBranch, "cmbCompanyBranch");
+            this.cmbCompanyBranch.Name = "cmbCompanyBranch";
             // 
             // label7
             // 
@@ -532,7 +532,7 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.ComboBox cmbEmployeesCustomer;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCompanyBranch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
