@@ -74,9 +74,7 @@ namespace WindowsFormsApplication3
                 {
                     emp.CompanyId = Int32.Parse(cmbCompanyEmployee.Text);
                 }
-
                 bool success = EmployeeController.Create(emp);
-
                 if (success)
                 {
 
@@ -86,7 +84,6 @@ namespace WindowsFormsApplication3
                 {
                     lblresponse.Text = "Failed to create Employee";
                 }
-
             }
             catch (Exception ex)
             {
