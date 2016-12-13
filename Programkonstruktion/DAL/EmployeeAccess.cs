@@ -169,7 +169,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = emp.EmployeeId;
-                cmd.Parameters.Add("@Name", SqlDbType.Int).Value = emp.Name;
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = emp.Name;
                 if (emp.CompanyId == 0 || emp.CompanyId == null)
                 {
                     cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = DBNull.Value;

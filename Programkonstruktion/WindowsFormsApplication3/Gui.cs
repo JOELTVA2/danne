@@ -170,6 +170,7 @@ namespace WindowsFormsApplication3
                     return;
                 }
                 currentEmployee.Name = empNameTextBox.Text;
+
                 currentEmployee.CompanyId = Int32.Parse(cmbCompanyEmployee.Text);
 
                 EmployeeController.Update(currentEmployee);
