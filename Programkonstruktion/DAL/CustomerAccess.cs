@@ -211,6 +211,39 @@ namespace DAL
             return true;
         }
 
+        public static DataTable ReadAllDeletedCustomers()
+        {
+
+            DataTable customers = new DataTable();
+            SqlConnection conn = DBUtil.CreateConnection();
+            if (conn == null)
+            {
+                return customers;
+            }
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_Info_About_All_Deleted_Customers", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(customers);
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+            finally
+            {
+                DBUtil.CloseConnection(conn);
+
+
+            }
+            return customers;
+
+        }
+
     }
 }
 

@@ -89,6 +89,7 @@ namespace WindowsFormsApplication3
             this.lblresponse = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblmessage = new System.Windows.Forms.Label();
+            this.dgvDeleted = new System.Windows.Forms.DataGridView();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
             btnCompanyCreate = new System.Windows.Forms.Button();
@@ -106,6 +107,7 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranchCompanies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).BeginInit();
             this.SuspendLayout();
             // 
             // createEmpButton
@@ -257,6 +259,7 @@ namespace WindowsFormsApplication3
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.dgvDeleted);
             this.tabPage1.Controls.Add(this.cmbEmployeesCustomer);
             this.tabPage1.Controls.Add(this.dgvCustomers);
             this.tabPage1.Controls.Add(this.label5);
@@ -551,6 +554,16 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.lblmessage, "lblmessage");
             this.lblmessage.Name = "lblmessage";
             // 
+            // dgvDeleted
+            // 
+            this.dgvDeleted.AllowUserToAddRows = false;
+            this.dgvDeleted.AllowUserToDeleteRows = false;
+            this.dgvDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeleted.ColumnHeadersVisible = false;
+            resources.ApplyResources(this.dgvDeleted, "dgvDeleted");
+            this.dgvDeleted.Name = "dgvDeleted";
+            this.dgvDeleted.ReadOnly = true;
+            // 
             // Gui
             // 
             resources.ApplyResources(this, "$this");
@@ -577,6 +590,7 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -635,5 +649,6 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.DataGridView dgvBranchCompanies;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblmessage;
+        private System.Windows.Forms.DataGridView dgvDeleted;
     }
 }

@@ -35,5 +35,9 @@ namespace Controller
         {
             return CustomerAccess.ReadAllCustomersForEmployee(emp);
         }
+        public static DataTable ReadAllDeletedCustomers()
+        {
+            return CustomerAccess.ReadAllDeletedCustomers();
+        }
     }
 }

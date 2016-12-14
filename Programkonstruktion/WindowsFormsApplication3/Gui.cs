@@ -126,6 +126,7 @@ namespace WindowsFormsApplication3
             updateCmbEmployee();
             updateCmbCompanyBranch();
             updateCmbEmployeeCompany();
+            dgvDeleted.DataSource = CustomerController.ReadAllDeletedCustomers();
         }
 
 
@@ -223,13 +224,15 @@ namespace WindowsFormsApplication3
             try
             {
                 currentEmployee = cmbEmployeesCustomer.SelectedItem as Employee;
-
-                int empId = Int32.Parse(cmbEmployeesCustomer.Text);
-                currentEmployee = EmployeeController.FindById(empId);
+                if (cmbEmployeesCustomer.Text != "")
+                {
+                    int empId = Int32.Parse(cmbEmployeesCustomer.Text);
+                    currentEmployee = EmployeeController.FindById(empId);
+                }
 
                 if (currentEmployee == null)
                 {
-                    lblresponse.Text = "No customer selected";
+                    lblresponse.Text = "No Employee selected";
                     return;
                 }
 
@@ -307,6 +310,7 @@ namespace WindowsFormsApplication3
             }
             FillListWithAllCustomers();
             CustomerClear();
+            dgvDeleted.DataSource = CustomerController.ReadAllDeletedCustomers();
 
         }
 
