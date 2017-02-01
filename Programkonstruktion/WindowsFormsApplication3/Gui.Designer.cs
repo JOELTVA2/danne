@@ -39,6 +39,7 @@ namespace WindowsFormsApplication3
             System.Windows.Forms.Button CreateBranchButton;
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvEmployeesCustomers = new System.Windows.Forms.DataGridView();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
@@ -52,6 +53,7 @@ namespace WindowsFormsApplication3
             this.showAllButton = new System.Windows.Forms.Button();
             this.empIdTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvDeleted = new System.Windows.Forms.DataGridView();
             this.cmbEmployeesCustomer = new System.Windows.Forms.ComboBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -89,7 +91,8 @@ namespace WindowsFormsApplication3
             this.lblresponse = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblmessage = new System.Windows.Forms.Label();
-            this.dgvDeleted = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label15 = new System.Windows.Forms.Label();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
             btnCompanyCreate = new System.Windows.Forms.Button();
@@ -99,6 +102,7 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompaniesEmployees)).BeginInit();
@@ -107,7 +111,6 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranchCompanies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).BeginInit();
             this.SuspendLayout();
             // 
             // createEmpButton
@@ -153,6 +156,7 @@ namespace WindowsFormsApplication3
             // tabPage7
             // 
             this.tabPage7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Controls.Add(this.label12);
             this.tabPage7.Controls.Add(this.dgvEmployeesCustomers);
             this.tabPage7.Controls.Add(this.dgvEmployees);
@@ -169,6 +173,13 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label12
             // 
@@ -259,6 +270,7 @@ namespace WindowsFormsApplication3
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.dgvDeleted);
             this.tabPage1.Controls.Add(this.cmbEmployeesCustomer);
             this.tabPage1.Controls.Add(this.dgvCustomers);
@@ -274,6 +286,18 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvDeleted
+            // 
+            this.dgvDeleted.AllowUserToAddRows = false;
+            this.dgvDeleted.AllowUserToDeleteRows = false;
+            this.dgvDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeleted.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDeleted.ColumnHeadersVisible = true;
+            resources.ApplyResources(this.dgvDeleted, "dgvDeleted");
+            this.dgvDeleted.Name = "dgvDeleted";
+            this.dgvDeleted.ReadOnly = true;
+            this.dgvDeleted.RowHeadersVisible = false;
             // 
             // cmbEmployeesCustomer
             // 
@@ -554,15 +578,14 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.lblmessage, "lblmessage");
             this.lblmessage.Name = "lblmessage";
             // 
-            // dgvDeleted
+            // openFileDialog1
             // 
-            this.dgvDeleted.AllowUserToAddRows = false;
-            this.dgvDeleted.AllowUserToDeleteRows = false;
-            this.dgvDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeleted.ColumnHeadersVisible = false;
-            resources.ApplyResources(this.dgvDeleted, "dgvDeleted");
-            this.dgvDeleted.Name = "dgvDeleted";
-            this.dgvDeleted.ReadOnly = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
             // 
             // Gui
             // 
@@ -579,6 +602,7 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -590,7 +614,6 @@ namespace WindowsFormsApplication3
             ((System.ComponentModel.ISupportInitialize)(this.dgvBranches)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -650,5 +673,8 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblmessage;
         private System.Windows.Forms.DataGridView dgvDeleted;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label15;
     }
 }

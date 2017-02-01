@@ -108,7 +108,9 @@ namespace WindowsFormsApplication3
 
         private void FillListWithAllCompanies()
         {
-            dgvCompanies.DataSource = CompanyController.ReadAll();
+            DataTable test = CompanyController.ReadAll();
+            dgvCompanies.DataSource = test;
+                
         }
 
         private void showAllEmployees_Click(object sender, EventArgs e)
@@ -156,13 +158,12 @@ namespace WindowsFormsApplication3
             string tempName;
             try
             {
-
+    
                 if (currentEmployee == null)
                 {
                     lblresponse.Text = "No employee chosen";
                     return;
                 }
-
                 tempName = empNameTextBox.Text;
                 tempName = tempName.Trim();
                 if (String.IsNullOrEmpty(tempName))
@@ -359,8 +360,7 @@ namespace WindowsFormsApplication3
                 empIdTextBox.Text = currentEmployee.EmployeeId.ToString();
                 empNameTextBox.Text = currentEmployee.Name;
                 dgvEmployeesCustomers.DataSource = CustomerController.ReadAllCustomersForEmployee(currentEmployee);
-                
-
+                DataTable dt1 = CustomerController.ReadAllCustomersForEmployee(currentEmployee);
             }
             catch (Exception ex)
             {
@@ -704,6 +704,11 @@ namespace WindowsFormsApplication3
         private void btnCompanyShowAll_Click(object sender, EventArgs e)
         {
             FillListWithAllCompanies();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
         }
     }
  }
