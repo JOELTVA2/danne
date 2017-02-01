@@ -39,7 +39,6 @@ namespace WindowsFormsApplication3
             System.Windows.Forms.Button CreateBranchButton;
             this.tabCust = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvEmployeesCustomers = new System.Windows.Forms.DataGridView();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
@@ -155,7 +154,6 @@ namespace WindowsFormsApplication3
             // tabPage7
             // 
             this.tabPage7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Controls.Add(this.label12);
             this.tabPage7.Controls.Add(this.dgvEmployeesCustomers);
             this.tabPage7.Controls.Add(this.dgvEmployees);
@@ -172,13 +170,6 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label12
             // 
@@ -667,7 +658,6 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblmessage;
         private System.Windows.Forms.DataGridView dgvDeleted;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label15;
     }
 }
