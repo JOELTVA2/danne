@@ -53,6 +53,7 @@ namespace WindowsFormsApplication3
             this.showAllButton = new System.Windows.Forms.Button();
             this.empIdTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.dgvDeleted = new System.Windows.Forms.DataGridView();
             this.cmbEmployeesCustomer = new System.Windows.Forms.ComboBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
@@ -91,8 +92,6 @@ namespace WindowsFormsApplication3
             this.lblresponse = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblmessage = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label15 = new System.Windows.Forms.Label();
             createEmpButton = new System.Windows.Forms.Button();
             CreateCustomerButton = new System.Windows.Forms.Button();
             btnCompanyCreate = new System.Windows.Forms.Button();
@@ -287,13 +286,17 @@ namespace WindowsFormsApplication3
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
             // dgvDeleted
             // 
             this.dgvDeleted.AllowUserToAddRows = false;
             this.dgvDeleted.AllowUserToDeleteRows = false;
-            this.dgvDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeleted.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDeleted.ColumnHeadersVisible = true;
+            this.dgvDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dgvDeleted, "dgvDeleted");
             this.dgvDeleted.Name = "dgvDeleted";
             this.dgvDeleted.ReadOnly = true;
@@ -578,15 +581,6 @@ namespace WindowsFormsApplication3
             resources.ApplyResources(this.lblmessage, "lblmessage");
             this.lblmessage.Name = "lblmessage";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
             // Gui
             // 
             resources.ApplyResources(this, "$this");
@@ -674,7 +668,6 @@ namespace WindowsFormsApplication3
         private System.Windows.Forms.Label lblmessage;
         private System.Windows.Forms.DataGridView dgvDeleted;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label15;
     }
 }
